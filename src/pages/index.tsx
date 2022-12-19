@@ -4,7 +4,13 @@ import Head from "next/head";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
+  const createType = trpc.propertyType.propertyTypeCreate.useMutation();
+
+  const handleClick = async () => {
+    createType.mutate({ name: "Casa" });
+  };
+
+  const hello = trpc.propertyType.getPropertyTypes.useQuery();
 
   return (
     <>
@@ -15,6 +21,7 @@ const Home: NextPage = () => {
       </Head>
       <main className=" ">
         <h1>PASEO 360</h1>
+        <button onClick={handleClick}>CREAR TIPO</button>
       </main>
     </>
   );
