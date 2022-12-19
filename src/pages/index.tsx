@@ -1,16 +1,11 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import PropertyCard from "../components/PropertyCard";
 
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const createType = trpc.propertyType.propertyTypeCreate.useMutation();
-
-  const handleClick = async () => {
-    createType.mutate({ name: "Casa" });
-  };
-
-  const hello = trpc.propertyType.getPropertyTypes.useQuery();
+  const properties = trpc.property.getAllProperties.useQuery();
 
   return (
     <>
@@ -21,7 +16,10 @@ const Home: NextPage = () => {
       </Head>
       <main className=" ">
         <h1>PASEO 360</h1>
-        <button onClick={handleClick}>CREAR TIPO</button>
+        {!properties.isLoading &&
+          properties?.data?.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
       </main>
     </>
   );

@@ -3,6 +3,13 @@ import { z } from "zod";
 import { router, publicProcedure } from "../trpc";
 
 export const propertyRouter = router({
+  getAllProperties: publicProcedure.query(async (req) => {
+    const properties = await prisma?.property.findMany({
+      include: { type: true },
+    });
+
+    return properties;
+  }),
   propertyCreate: publicProcedure
     .input(
       z.object({
