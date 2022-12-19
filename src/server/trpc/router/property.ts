@@ -3,6 +3,30 @@ import { z } from "zod";
 import { router, publicProcedure } from "../trpc";
 
 export const propertyRouter = router({
+  getFilteredProperties: publicProcedure
+    .input(
+      z.object({
+        operation: z.string().optional(),
+        typeId: z.string().optional(),
+        minPrice: z.number().optional(),
+        maxPrice: z.number().optional(),
+        ambiences: z.number().optional(),
+        bathrooms: z.number().optional(),
+      })
+    )
+    .query(async ({ input }) => {
+      const properties = await prisma?.property.findMany({
+        where: {
+          operation: input.operation,
+          typeId: input.typeId,
+          price: { gte: input.minPrice, lte: input.maxPrice },
+          ambiences: input.ambiences,
+          bathrooms: input.bathrooms,
+        },
+      });
+
+      return properties;
+    }),
   getAllProperties: publicProcedure.query(async (req) => {
     const properties = await prisma?.property.findMany({
       include: { type: true },
@@ -14,6 +38,7 @@ export const propertyRouter = router({
     .input(
       z.object({
         location: z.string(),
+        address: z.string(),
         typeId: z.string(),
         operation: z.string(),
         price: z.number(),
@@ -21,15 +46,16 @@ export const propertyRouter = router({
         bathrooms: z.number(),
       })
     )
-    .mutation(async (req) => {
+    .mutation(async ({ input }) => {
       const newProperty = await prisma?.property.create({
         data: {
-          location: req.input.location,
-          typeId: req.input.typeId,
-          operation: req.input.operation,
-          price: req.input.price,
-          ambiences: req.input.ambiences,
-          bathrooms: req.input.bathrooms,
+          location: input.location,
+          address: input.address,
+          typeId: input.typeId,
+          operation: input.operation,
+          price: input.price,
+          ambiences: input.ambiences,
+          bathrooms: input.bathrooms,
         },
       });
 

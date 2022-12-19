@@ -1,6 +1,7 @@
 export type Property = {
   id: string;
   location: string;
+  address: string;
   typeId: string;
   type: PropertyType;
   operation: string;

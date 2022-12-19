@@ -17,6 +17,7 @@ datasource db {
 model Property {
   id            String   @id @default(cuid())
   location      String
+  address       String
   type          PropertyType @relation(fields: [typeId], references: [id])
   typeId        String
   operation     String
