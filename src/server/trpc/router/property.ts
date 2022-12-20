@@ -34,6 +34,19 @@ export const propertyRouter = router({
 
     return properties;
   }),
+  getPropertyById: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input }) => {
+      const property = await prisma?.property.findUnique({
+        where: { id: input.id },
+        include: {
+          type: true,
+          extraInfo: true,
+        },
+      });
+
+      return property;
+    }),
   propertyCreate: publicProcedure
     .input(
       z.object({
@@ -60,5 +73,32 @@ export const propertyRouter = router({
       });
 
       return { created: true, newProperty };
+    }),
+  propertyInfoCreate: publicProcedure
+    .input(
+      z.object({
+        description: z.string(),
+        surface: z.number(),
+        petsAllowed: z.boolean(),
+        parking: z.boolean(),
+        airConditioning: z.boolean(),
+        buildYear: z.number(),
+        propertyId: z.string(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const newPropertyInfo = await prisma?.propertyInfo.create({
+        data: {
+          property: { connect: { id: input.propertyId } },
+          description: input.description,
+          surface: input.surface,
+          petsAllowed: input.petsAllowed,
+          parking: input.parking,
+          airConditioning: input.airConditioning,
+          buildYear: input.buildYear,
+        },
+      });
+
+      return { created: true, newPropertyInfo };
     }),
 });
