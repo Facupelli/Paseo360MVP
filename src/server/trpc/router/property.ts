@@ -12,6 +12,12 @@ export const propertyRouter = router({
         maxPrice: z.number().optional(),
         ambiences: z.number().optional(),
         bathrooms: z.number().optional(),
+        minSurface: z.number().optional(),
+        maxSurface: z.number().optional(),
+        petsAllowed: z.boolean().optional(),
+        minBuildYear: z.number().optional(),
+        parking: z.boolean().optional(),
+        airConditioning: z.boolean().optional(),
       })
     )
     .query(async ({ input }) => {
@@ -22,6 +28,13 @@ export const propertyRouter = router({
           price: { gte: input.minPrice, lte: input.maxPrice },
           ambiences: input.ambiences,
           bathrooms: input.bathrooms,
+          extraInfo: {
+            surface: { gte: input.minSurface, lte: input.maxSurface },
+            petsAllowed: input.petsAllowed,
+            buildYear: { gte: input.minBuildYear },
+            parking: input.parking,
+            airConditioning: input.airConditioning,
+          },
         },
       });
 
