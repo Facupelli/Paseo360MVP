@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { Property } from "../types/property";
 import { formatPrice } from "../utils/property";
 
@@ -7,8 +8,13 @@ type Props = {
 };
 
 export default function PropertyCard({ property }: Props) {
+  const router = useRouter();
+
   return (
-    <article className="cursor-pointer rounded-bl rounded-br bg-slate-700 hover:shadow-md ">
+    <article
+      className="cursor-pointer rounded-bl rounded-br bg-slate-700 hover:shadow-md"
+      onClick={() => router.push(`/property/${property.id}`)}
+    >
       <div className="h-52 w-full bg-slate-50">
         <Image src="" alt={property.address} />
       </div>
