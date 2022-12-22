@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+
+import { getLeftDivPosition, getTopDivPosition } from "../utils/filters";
+
 import Flyout from "./UI/Flyout";
 import FilterButton from "./UI/FilterButton";
 
@@ -40,7 +43,7 @@ export default function PropertyFilters() {
       >
         <select
           {...register("operation")}
-          className="rounded-md border border-gray-500 bg-gray-800 p-2"
+          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2"
         >
           <option value="rent">Alquiler</option>
           <option value="sell">Venta</option>
@@ -55,11 +58,8 @@ export default function PropertyFilters() {
         </div>
         {showPriceFilter && priceDivRef.current && (
           <Flyout
-            top={
-              priceDivRef.current.getBoundingClientRect().top +
-              priceDivRef.current.getBoundingClientRect().height
-            }
-            left={priceDivRef.current.getBoundingClientRect().left}
+            top={getTopDivPosition(priceDivRef.current)}
+            left={getLeftDivPosition(priceDivRef.current)}
           >
             <div className="flex gap-2">
               <input
@@ -83,8 +83,9 @@ export default function PropertyFilters() {
 
         <select
           {...register("type")}
-          className="rounded-md border border-gray-500 bg-gray-800 p-2"
+          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2"
         >
+          <option value="todos">todos</option>
           <option value="Casa">Casa</option>
           <option value="Departamento">Departamento</option>
         </select>
@@ -98,11 +99,8 @@ export default function PropertyFilters() {
         </div>
         {showAmbiencesFilter && ambiencesDivRef.current && (
           <Flyout
-            top={
-              ambiencesDivRef.current.getBoundingClientRect().top +
-              ambiencesDivRef.current.getBoundingClientRect().height
-            }
-            left={ambiencesDivRef.current.getBoundingClientRect().left}
+            top={getTopDivPosition(ambiencesDivRef.current)}
+            left={getLeftDivPosition(ambiencesDivRef.current)}
           >
             <fieldset className="align-center flex flex-wrap text-gray-800">
               <div className="flex align-middle">
@@ -219,11 +217,8 @@ export default function PropertyFilters() {
         </div>
         {showBathsFilter && bathsDivRef.current && (
           <Flyout
-            top={
-              bathsDivRef.current.getBoundingClientRect().top +
-              bathsDivRef.current.getBoundingClientRect().height
-            }
-            left={bathsDivRef.current.getBoundingClientRect().left}
+            top={getTopDivPosition(bathsDivRef.current)}
+            left={getLeftDivPosition(bathsDivRef.current)}
           >
             <fieldset className="flex flex-wrap items-center text-gray-800">
               <div className="flex align-middle">
