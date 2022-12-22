@@ -12,15 +12,15 @@ const Home: NextPage = () => {
   const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();
 
   const handleClick = () => {
-    // createProperty.mutate({
-    //   location: { lat: -31.535549929191294, lng: -68.4881385087048 },
-    //   ambiences: 5,
-    //   bathrooms: 3,
-    //   address: "Santa Lucia 1334 oeste",
-    //   typeId: "clby23yd40000e7ikw3evgekx",
-    //   operation: "rent",
-    //   price: 4500000,
-    // });
+    createProperty.mutate({
+      location: { lat: -31.521206732841065, lng: -68.5236785671953 },
+      ambiences: 4,
+      bathrooms: 1,
+      address: "Concepción 234 oeste",
+      typeId: "clby23yd40000e7ikw3evgekx",
+      operation: "rent",
+      price: 4000000,
+    });
   };
 
   return (
@@ -31,12 +31,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" ">
-        <h1>PASEO 360</h1>
         <section className="grid grid-cols-10 gap-x-4">
-          <div className="col-span-4">
+          <div className="col-span-4 ">
             <MapContainer />
           </div>
-          <div className="col-span-6">
+          <div className="col-span-6 grid grid-cols-2 gap-6">
             {!properties.isLoading &&
               properties?.data?.map((property) => (
                 <PropertyCard key={property.id} property={property} />
