@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Flyout from "./Flyout";
+import FilterButton from "./UI/FilterButton";
 
 type FormValues = {
   operation: string;
@@ -31,23 +32,26 @@ export default function PropertyFilters() {
     console.log(data);
   };
 
-  useEffect(() => {
-    console.log("BUTTON REF", priceDivRef);
-    console.log(priceDivRef.current?.getBoundingClientRect());
-  }, [priceDivRef]);
-
   return (
-    <section className="pb-4 text-gray-900">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex gap-4 py-4">
-        <select {...register("operation")}>
+    <section className="pb-4 ">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex items-center gap-4 py-4"
+      >
+        <select
+          {...register("operation")}
+          className="rounded-md border border-gray-500 bg-gray-800 p-2"
+        >
           <option value="rent">Alquiler</option>
           <option value="sell">Venta</option>
         </select>
 
         <div ref={priceDivRef}>
-          <button type="button" onClick={() => setShowPriceFilter(true)}>
-            Precio
-          </button>
+          <FilterButton
+            color="gray"
+            handleClick={() => setShowPriceFilter(true)}
+            text="Precio"
+          />
         </div>
         {showPriceFilter && priceDivRef.current && (
           <Flyout
@@ -68,22 +72,29 @@ export default function PropertyFilters() {
                 {...register("maxPrice")}
                 placeholder="máximo"
               />
-              <button type="button" onClick={() => setShowPriceFilter(false)}>
-                listo
-              </button>
+              <FilterButton
+                handleClick={() => setShowPriceFilter(false)}
+                text="listo"
+                color="white"
+              />
             </div>
           </Flyout>
         )}
 
-        <select {...register("type")}>
+        <select
+          {...register("type")}
+          className="rounded-md border border-gray-500 bg-gray-800 p-2"
+        >
           <option value="Casa">Casa</option>
           <option value="Departamento">Departamento</option>
         </select>
 
         <div ref={ambiencesDivRef}>
-          <button type="button" onClick={() => setShowAmbiencesFilter(true)}>
-            Ambientes
-          </button>
+          <FilterButton
+            color="gray"
+            handleClick={() => setShowAmbiencesFilter(true)}
+            text="Ambientes"
+          />
         </div>
         {showAmbiencesFilter && ambiencesDivRef.current && (
           <Flyout
@@ -94,8 +105,6 @@ export default function PropertyFilters() {
             left={ambiencesDivRef.current.getBoundingClientRect().left}
           >
             <fieldset>
-              <legend>Habitaciones</legend>
-
               <label>any</label>
               <input type="checkbox" value="any" />
 
@@ -114,20 +123,21 @@ export default function PropertyFilters() {
               <label>+5</label>
               <input type="checkbox" value="+5" {...register("ambiences")} />
 
-              <button
-                type="button"
-                onClick={() => setShowAmbiencesFilter(false)}
-              >
-                listo
-              </button>
+              <FilterButton
+                handleClick={() => setShowAmbiencesFilter(false)}
+                text="listo"
+                color="white"
+              />
             </fieldset>
           </Flyout>
         )}
 
         <div ref={bathsDivRef}>
-          <button type="button" onClick={() => setShowBathsFilter(true)}>
-            Baños
-          </button>
+          <FilterButton
+            color="gray"
+            handleClick={() => setShowBathsFilter(true)}
+            text="Baños"
+          />
         </div>
         {showBathsFilter && bathsDivRef.current && (
           <Flyout
@@ -138,8 +148,6 @@ export default function PropertyFilters() {
             left={bathsDivRef.current.getBoundingClientRect().left}
           >
             <fieldset>
-              <legend>Baños</legend>
-
               <label>any</label>
               <input type="checkbox" value="any" {...register("bathrooms")} />
 
@@ -155,13 +163,19 @@ export default function PropertyFilters() {
               <label>+4</label>
               <input type="checkbox" value="+4" {...register("bathrooms")} />
 
-              <button type="button" onClick={() => setShowBathsFilter(false)}>
-                listo
-              </button>
+              <FilterButton
+                handleClick={() => setShowBathsFilter(false)}
+                text="listo"
+                color="white"
+              />
             </fieldset>
           </Flyout>
         )}
-        <button type="button">MÁS FILTROS</button>
+        <FilterButton
+          color="gray"
+          text="Más filtros"
+          handleClick={() => null}
+        />
       </form>
     </section>
   );

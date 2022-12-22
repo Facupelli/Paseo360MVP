@@ -7,11 +7,13 @@ type Props = {
 };
 
 export default function Flyout({ children, top, left }: Props) {
+  const styles = {
+    top: top ? top + 10 : 0,
+    left,
+  };
+
   return (
-    <div
-      className="fixed bg-white p-4 shadow-md"
-      style={{ top: top ? top + 10 : 0, left }}
-    >
+    <div className="fixed z-10 bg-white p-4 shadow-md " style={styles}>
       {children}
     </div>
   );
