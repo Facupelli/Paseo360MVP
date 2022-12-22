@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import Flyout from "./Flyout";
+import Flyout from "./UI/Flyout";
 import FilterButton from "./UI/FilterButton";
 
 type FormValues = {

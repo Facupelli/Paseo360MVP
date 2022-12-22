@@ -33,10 +33,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" ">
-        <section className="fixed w-2/5 pr-4">
-          <MapContainer />
-        </section>
-        <section className="ml-auto  w-3/5 ">
+        <MapContainer properties={properties.data} />
+        <section className="ml-auto w-3/5 pl-4 ">
           <PropertyFilters />
           <div className="grid grid-cols-2 gap-6">
             {!properties.isLoading &&

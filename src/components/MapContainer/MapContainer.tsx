@@ -1,13 +1,15 @@
-import { trpc } from "../../utils/trpc";
+import { Property } from "../../types/property";
 
 import Map from "./Map";
 
-export default function MapContainer() {
-  const properties = trpc.property.getAllProperties.useQuery();
+type Props = {
+  properties: Property[] | undefined;
+};
 
+export default function MapContainer({ properties }: Props) {
   return (
-    <section className="h-screen w-full bg-slate-300">
-      <Map properties={properties.data} />
+    <section className="fixed h-screen w-2/5 bg-slate-300">
+      <Map properties={properties} />
     </section>
   );
 }
