@@ -63,7 +63,7 @@ export const propertyRouter = router({
   propertyCreate: publicProcedure
     .input(
       z.object({
-        location: z.string(),
+        location: z.object({ lat: z.number(), lng: z.number() }),
         address: z.string(),
         typeId: z.string(),
         operation: z.string(),
@@ -75,7 +75,8 @@ export const propertyRouter = router({
     .mutation(async ({ input }) => {
       const newProperty = await prisma?.property.create({
         data: {
-          location: input.location,
+          locationLat: input.location.lat,
+          locationLng: input.location.lng,
           address: input.address,
           typeId: input.typeId,
           operation: input.operation,

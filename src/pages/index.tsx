@@ -1,11 +1,27 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import MapContainer from "../components/MapContainer/MapContainer";
 import PropertyCard from "../components/PropertyCard";
 
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const properties = trpc.property.getAllProperties.useQuery();
+
+  const createProperty = trpc.property.propertyCreate.useMutation();
+  const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();
+
+  const handleClick = () => {
+    // createProperty.mutate({
+    //   location: { lat: -31.535549929191294, lng: -68.4881385087048 },
+    //   ambiences: 5,
+    //   bathrooms: 3,
+    //   address: "Santa Lucia 1334 oeste",
+    //   typeId: "clby23yd40000e7ikw3evgekx",
+    //   operation: "rent",
+    //   price: 4500000,
+    // });
+  };
 
   return (
     <>
@@ -16,10 +32,18 @@ const Home: NextPage = () => {
       </Head>
       <main className=" ">
         <h1>PASEO 360</h1>
-        {!properties.isLoading &&
-          properties?.data?.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+        <section className="grid grid-cols-10 gap-x-4">
+          <div className="col-span-4">
+            <MapContainer />
+          </div>
+          <div className="col-span-6">
+            {!properties.isLoading &&
+              properties?.data?.map((property) => (
+                <PropertyCard key={property.id} property={property} />
+              ))}
+          </div>
+        </section>
+        <button onClick={handleClick}>CREAR PROPIEDAD</button>
       </main>
     </>
   );

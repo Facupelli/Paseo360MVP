@@ -14,9 +14,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model Property {
   id            String   @id @default(cuid())
-  location      String
+  locationLat   Float
+  locationLng   Float
   address       String
   type          PropertyType @relation(fields: [typeId], references: [id])
   typeId        String
