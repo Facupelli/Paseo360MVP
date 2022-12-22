@@ -41,8 +41,19 @@ export default function Map({ properties }) {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {properties?.map(({ id, locationLat, locationLng }) => (
-        <MarkerF key={id} position={{ lat: locationLat, lng: locationLng }} />
+      {properties?.map(({ id, locationLat, locationLng, type }) => (
+        <MarkerF
+          key={id}
+          position={{ lat: locationLat, lng: locationLng }}
+          icon={{
+            url: `${
+              type.name === "Casa"
+                ? "https://www.svgrepo.com/show/5123/house.svg"
+                : "https://www.svgrepo.com/show/42498/building.svg"
+            } `,
+            scaledSize: { width: 22, height: 22 },
+          }}
+        />
       ))}
     </GoogleMap>
   );

@@ -36,7 +36,7 @@ export default function PropertyFilters() {
   };
 
   return (
-    <section className="pb-4 ">
+    <section>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex items-center gap-4 py-4"

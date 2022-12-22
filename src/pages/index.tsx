@@ -42,8 +42,8 @@ const Home: NextPage = () => {
                 <PropertyCard key={property.id} property={property} />
               ))}
           </div>
+          <button onClick={handleClick}>CREAR PROPIEDAD</button>
         </section>
-        <button onClick={handleClick}>CREAR PROPIEDAD</button>
       </main>
     </>
   );
