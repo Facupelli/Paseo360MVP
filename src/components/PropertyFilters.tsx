@@ -105,89 +105,101 @@ export default function PropertyFilters() {
             left={ambiencesDivRef.current.getBoundingClientRect().left}
           >
             <fieldset className="align-center flex flex-wrap text-gray-800">
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="any"
-              >
-                any
-              </label>
-              <input
-                className="hidden"
-                id="any"
-                type="checkbox"
-                value="any"
-                {...register("ambiences")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="any"
+                  type="checkbox"
+                  value="any"
+                  {...register("ambiences")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="any"
+                >
+                  any
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="1"
-              >
-                1
-              </label>
-              <input
-                className="hidden"
-                id="1"
-                type="checkbox"
-                value={1}
-                {...register("ambiences")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="1"
+                  type="checkbox"
+                  value={1}
+                  {...register("ambiences")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="1"
+                >
+                  1
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="2"
-              >
-                2
-              </label>
-              <input
-                className="hidden"
-                id="2"
-                type="checkbox"
-                value={2}
-                {...register("ambiences")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="2"
+                  type="checkbox"
+                  value={2}
+                  {...register("ambiences")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="2"
+                >
+                  2
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="3"
-              >
-                3
-              </label>
-              <input
-                className="hidden"
-                id="3"
-                type="checkbox"
-                value={3}
-                {...register("ambiences")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="3"
+                  type="checkbox"
+                  value={3}
+                  {...register("ambiences")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="3"
+                >
+                  3
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="4"
-              >
-                4
-              </label>
-              <input
-                className="hidden"
-                id="4"
-                type="checkbox"
-                value={4}
-                {...register("ambiences")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="4"
+                  type="checkbox"
+                  value={4}
+                  {...register("ambiences")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="4"
+                >
+                  4
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="+5"
-              >
-                +5
-              </label>
-              <input
-                className="hidden"
-                id="+5"
-                type="checkbox"
-                value="+5"
-                {...register("ambiences")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="+5"
+                  type="checkbox"
+                  value="+5"
+                  {...register("ambiences")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="+5"
+                >
+                  +5
+                </label>
+              </div>
 
               <FilterButton
                 handleClick={() => setShowAmbiencesFilter(false)}
@@ -214,75 +226,85 @@ export default function PropertyFilters() {
             left={bathsDivRef.current.getBoundingClientRect().left}
           >
             <fieldset className="flex flex-wrap items-center text-gray-800">
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="any"
-              >
-                any
-              </label>
-              <input
-                className="hidden"
-                id="any"
-                type="checkbox"
-                value="any"
-                {...register("bathrooms")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="any"
+                  type="checkbox"
+                  value="any"
+                  {...register("bathrooms")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="any"
+                >
+                  any
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="1"
-              >
-                1
-              </label>
-              <input
-                className="hidden"
-                id="1"
-                type="checkbox"
-                value={1}
-                {...register("bathrooms")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="1"
+                  type="checkbox"
+                  value={1}
+                  {...register("bathrooms")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="1"
+                >
+                  1
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="2"
-              >
-                2
-              </label>
-              <input
-                className="hidden"
-                id="2"
-                type="checkbox"
-                value={2}
-                {...register("bathrooms")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="2"
+                  type="checkbox"
+                  value={2}
+                  {...register("bathrooms")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="2"
+                >
+                  2
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="3"
-              >
-                3
-              </label>
-              <input
-                className="hidden"
-                id="3"
-                type="checkbox"
-                value={3}
-                {...register("bathrooms")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="3"
+                  type="checkbox"
+                  value={3}
+                  {...register("bathrooms")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="3"
+                >
+                  3
+                </label>
+              </div>
 
-              <label
-                className="w-10 border border-gray-500 p-2 text-center"
-                htmlFor="+4"
-              >
-                +4
-              </label>
-              <input
-                className="hidden"
-                id="+4"
-                type="checkbox"
-                value="+4"
-                {...register("bathrooms")}
-              />
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="+4"
+                  type="checkbox"
+                  value="+4"
+                  {...register("bathrooms")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="+4"
+                >
+                  +4
+                </label>
+              </div>
 
               <FilterButton
                 handleClick={() => setShowBathsFilter(false)}
