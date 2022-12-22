@@ -2,26 +2,26 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import MapContainer from "../components/MapContainer/MapContainer";
 import PropertyCard from "../components/PropertyCard";
+import PropertyFilters from "../components/PropertyFilters";
 
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const properties = trpc.property.getAllProperties.useQuery();
 
-  const createProperty = trpc.property.propertyCreate.useMutation();
-  const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();
+  // const createProperty = trpc.property.propertyCreate.useMutation();
+  // const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();
 
   const handleClick = () => {
-    createProperty.mutate({
-      location: { lat: -31.53576907382949, lng: -68.531095306108 },
-      ambiences: 2,
-      bathrooms: 1,
-      address: "Plaza Laprida 567 oeste",
-      typeId: "clbz7mo6n0003e7kowfcl1c3t",
-      operation: "rent",
-      price: 2700000,
-    });
-
+    // createProperty.mutate({
+    //   location: { lat: -31.53576907382949, lng: -68.531095306108 },
+    //   ambiences: 2,
+    //   bathrooms: 1,
+    //   address: "Plaza Laprida 567 oeste",
+    //   typeId: "clbz7mo6n0003e7kowfcl1c3t",
+    //   operation: "rent",
+    //   price: 2700000,
+    // });
     // createPropertyType.mutate({ name: "Departamento" });
   };
 
@@ -33,11 +33,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" ">
-        <section className="">
-          <div className="fixed w-2/5 pr-4">
-            <MapContainer />
-          </div>
-          <div className="ml-auto grid w-3/5 grid-cols-2 gap-6">
+        <section className="fixed w-2/5 pr-4">
+          <MapContainer />
+        </section>
+        <section className="ml-auto  w-3/5 ">
+          <PropertyFilters />
+          <div className="grid grid-cols-2 gap-6">
             {!properties.isLoading &&
               properties?.data?.map((property) => (
                 <PropertyCard key={property.id} property={property} />
