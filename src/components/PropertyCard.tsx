@@ -20,15 +20,15 @@ export default function PropertyCard({ property }: Props) {
       </div>
       {/* <p>{property.type.name}</p> */}
       <div className="p-2">
-        <div className="flex gap-x-2 pt-2">
-          <p className="font-semibold">
+        <div className="flex items-baseline gap-x-2 pt-2">
+          <p className="text-xs font-semibold">
             {property.operation === "rent" ? "Alquiler" : "Venta"}
           </p>
           <p className="ml-auto text-lg font-semibold">
             {formatPrice(property.price)}
           </p>
         </div>
-        <div className="flex gap-x-2  text-slate-400">
+        <div className="flex gap-x-2 text-slate-400">
           <p>amb: {property.ambiences}</p>
           <p>baths: {property.bathrooms}</p>
         </div>

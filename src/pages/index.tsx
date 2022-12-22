@@ -13,14 +13,16 @@ const Home: NextPage = () => {
 
   const handleClick = () => {
     createProperty.mutate({
-      location: { lat: -31.521206732841065, lng: -68.5236785671953 },
-      ambiences: 4,
+      location: { lat: -31.53576907382949, lng: -68.531095306108 },
+      ambiences: 2,
       bathrooms: 1,
-      address: "Concepción 234 oeste",
-      typeId: "clby23yd40000e7ikw3evgekx",
+      address: "Plaza Laprida 567 oeste",
+      typeId: "clbz7mo6n0003e7kowfcl1c3t",
       operation: "rent",
-      price: 4000000,
+      price: 2700000,
     });
+
+    // createPropertyType.mutate({ name: "Departamento" });
   };
 
   return (
@@ -31,11 +33,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" ">
-        <section className="grid grid-cols-10 gap-x-4">
-          <div className="col-span-4 ">
+        <section className="">
+          <div className="fixed w-2/5 pr-4">
             <MapContainer />
           </div>
-          <div className="col-span-6 grid grid-cols-2 gap-6">
+          <div className="ml-auto grid w-3/5 grid-cols-2 gap-6">
             {!properties.isLoading &&
               properties?.data?.map((property) => (
                 <PropertyCard key={property.id} property={property} />
