@@ -15,12 +15,12 @@ export default function PropertyCard({ property }: Props) {
       className="cursor-pointer rounded-bl rounded-br bg-slate-700 hover:shadow-md"
       onClick={() => router.push(`/property/${property.id}`)}
     >
-      <div className="h-52 w-full bg-slate-50 object-cover">
+      <div className="relative h-52 w-full bg-slate-50 ">
         <Image
           src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
           alt={property.address}
-          width={340}
-          height={208}
+          fill
+          style={{ objectFit: "cover" }}
         />
       </div>
       {/* <p>{property.type.name}</p> */}
