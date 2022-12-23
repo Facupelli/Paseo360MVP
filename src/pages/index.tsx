@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import MapContainer from "../components/MapContainer/MapContainer";
 import PropertyCard from "../components/PropertyCard";
@@ -12,7 +12,6 @@ const Home: NextPage = () => {
   const properties = trpc.property.getAllProperties.useQuery();
 
   const [activeProperty, setActiveProperty] = useState<string>("");
-  console.log(activeProperty);
 
   // const createProperty = trpc.property.propertyCreate.useMutation();
   // const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();

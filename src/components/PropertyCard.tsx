@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Carousel from "nuka-carousel/lib/carousel";
+import { Ref, useRef, RefObject } from "react";
 import { Property } from "../types/property";
 import { formatPrice } from "../utils/property";
 
@@ -12,13 +13,20 @@ type Props = {
 export default function PropertyCard({ property, activeProperty }: Props) {
   const router = useRouter();
 
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  if (property.id === activeProperty && cardRef.current) {
+    cardRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <article
-      className={`cursor-pointer rounded-bl rounded-br  bg-slate-700 hover:shadow-md ${
+      className={`cursor-pointer scroll-m-2 rounded-bl  rounded-br bg-slate-700 hover:shadow-md ${
         activeProperty === property.id
           ? "border border-gray-50 shadow-lg"
           : "border border-gray-800"
       }`}
+      ref={cardRef}
       // onClick={() => router.push(`/property/${property.id}`)}
     >
       <Carousel
