@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Carousel from "nuka-carousel/lib/carousel";
 import { Property } from "../types/property";
 import { formatPrice } from "../utils/property";
 
@@ -13,16 +14,62 @@ export default function PropertyCard({ property }: Props) {
   return (
     <article
       className="cursor-pointer rounded-bl rounded-br bg-slate-700 hover:shadow-md"
-      onClick={() => router.push(`/property/${property.id}`)}
+      // onClick={() => router.push(`/property/${property.id}`)}
     >
-      <div className="relative h-52 w-full bg-slate-50 ">
-        <Image
-          src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt={property.address}
-          fill
-          style={{ objectFit: "cover" }}
-        />
-      </div>
+      <Carousel
+        dragging={true}
+        swiping={true}
+        // renderCenterLeftControls={({ previousDisabled, previousSlide }) => (
+        //   <button onClick={previousSlide} disabled={previousDisabled}>
+        //     {"<"}
+        //   </button>
+        // )}
+        // renderCenterRightControls={({ nextDisabled, nextSlide }) => (
+        //   <button onClick={nextSlide} disabled={nextDisabled}>
+        //     {">"}
+        //   </button>
+        // )}
+        defaultControlsConfig={{
+          nextButtonText: ">",
+          prevButtonText: "<",
+          pagingDotsStyle: {
+            padding: "0 2px",
+          },
+        }}
+      >
+        <div className="relative h-52 w-full bg-slate-50 ">
+          <Image
+            src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            alt={property.address}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="relative h-52 w-full bg-slate-50 ">
+          <Image
+            src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            alt={property.address}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="relative h-52 w-full bg-slate-50 ">
+          <Image
+            src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            alt={property.address}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="relative h-52 w-full bg-slate-50 ">
+          <Image
+            src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            alt={property.address}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+      </Carousel>
       {/* <p>{property.type.name}</p> */}
       <div className="p-2">
         <div className="flex items-baseline gap-x-2 pt-2">
