@@ -1,5 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
+
 import MapContainer from "../components/MapContainer/MapContainer";
 import PropertyCard from "../components/PropertyCard";
 import PropertyFilters from "../components/PropertyFilters";
@@ -8,6 +10,9 @@ import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const properties = trpc.property.getAllProperties.useQuery();
+
+  const [activeProperty, setActiveProperty] = useState<string>("");
+  console.log(activeProperty);
 
   // const createProperty = trpc.property.propertyCreate.useMutation();
   // const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();
@@ -33,13 +38,21 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="px-2">
-        <MapContainer properties={properties.data} />
+        <MapContainer
+          properties={properties.data}
+          setActiveProperty={setActiveProperty}
+          activeProperty={activeProperty}
+        />
         <section className="ml-auto w-3/5 pl-4 ">
           <PropertyFilters />
           <div className="grid grid-cols-2 gap-6">
             {!properties.isLoading &&
               properties?.data?.map((property) => (
-                <PropertyCard key={property.id} property={property} />
+                <PropertyCard
+                  key={property.id}
+                  property={property}
+                  activeProperty={activeProperty}
+                />
               ))}
           </div>
           <button onClick={handleClick}>CREAR PROPIEDAD</button>

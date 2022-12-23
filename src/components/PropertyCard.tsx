@@ -6,14 +6,19 @@ import { formatPrice } from "../utils/property";
 
 type Props = {
   property: Property;
+  activeProperty: string;
 };
 
-export default function PropertyCard({ property }: Props) {
+export default function PropertyCard({ property, activeProperty }: Props) {
   const router = useRouter();
 
   return (
     <article
-      className="cursor-pointer rounded-bl rounded-br bg-slate-700 hover:shadow-md"
+      className={`cursor-pointer rounded-bl rounded-br  bg-slate-700 hover:shadow-md ${
+        activeProperty === property.id
+          ? "border border-gray-50 shadow-lg"
+          : "border border-gray-800"
+      }`}
       // onClick={() => router.push(`/property/${property.id}`)}
     >
       <Carousel

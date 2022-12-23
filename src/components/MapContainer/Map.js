@@ -1,7 +1,7 @@
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-export default function Map({ properties }) {
+export default function Map({ properties, setActiveProperty, activeProperty }) {
   const [map, setMap] = useState(null);
 
   const { isLoaded } = useLoadScript({
@@ -31,6 +31,13 @@ export default function Map({ properties }) {
     }
   }, [map, properties]);
 
+  const handleMarkerClick = (id) => {
+    if (id === activeProperty) {
+      return;
+    }
+    setActiveProperty(id);
+  };
+
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
@@ -40,6 +47,7 @@ export default function Map({ properties }) {
       zoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
+      onClick={() => setActiveProperty("")}
     >
       {properties?.map(({ id, locationLat, locationLng, type }) => (
         <MarkerF
@@ -51,8 +59,12 @@ export default function Map({ properties }) {
                 ? "https://www.svgrepo.com/show/5123/house.svg"
                 : "https://www.svgrepo.com/show/42498/building.svg"
             } `,
-            scaledSize: { width: 22, height: 22 },
+            scaledSize: {
+              width: activeProperty === id ? 35 : 22,
+              height: activeProperty === id ? 35 : 22,
+            },
           }}
+          onClick={() => handleMarkerClick(id)}
         />
       ))}
     </GoogleMap>
