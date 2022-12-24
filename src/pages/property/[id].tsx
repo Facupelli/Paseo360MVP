@@ -33,43 +33,82 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
                 height="480"
                 src="https://my.matterport.com/show/?m=KpBQUvEMirJ"
                 allow="xr-spatial-tracking"
+                allowFullScreen
               ></iframe>
             </div>
-            <p className="font-semibold">
-              {property?.address}{" "}
-              <span className="text-base font-normal text-gray-400">
-                departamento San Juan
-              </span>
-            </p>
-            <p>{property?.operation}</p>
-            <div className="flex items-center gap-4">
-              <p className="text-xl font-bold">
-                {formatPrice(property?.price ?? 0)}
-              </p>
-              <p className="ml-12">Ambientes: {property?.ambiences}</p>
-              <p>Baños: {property?.bathrooms}</p>
-              <p>
-                Superficie: {formatSurface(property?.extraInfo?.surface ?? 0)}
-                m²
-              </p>
-            </div>
-            MAPA
-            <div className="py-4">
-              <p className="font-bold">Descripción:</p>
-              <p>{property?.extraInfo?.description}</p>
-            </div>
-            <p>Año construcción: {property?.extraInfo?.buildYear}</p>
-            <div className="py-4">
-              <p className="font-bold">Destacados:</p>
-              <div className="grid grid-cols-2 ">
-                <p>Garage: {property?.extraInfo?.parking ? "SI" : "NO"}</p>
-                <p>
-                  Mascotas: {property?.extraInfo?.petsAllowed ? "SI" : "NO"}
+            <section className="border-b border-gray-400 pb-6">
+              <h3 className="pb-4 font-semibold">
+                {property?.address}{" "}
+                <span className="text-base font-normal text-gray-400">
+                  departamento, San Juan
+                </span>
+              </h3>
+              {/* <p>{property?.operation}</p> */}
+              <div className="flex gap-6">
+                <p className="self-end text-2xl font-bold">
+                  {formatPrice(property?.price ?? 0)}
                 </p>
-                <p>A/C: {property?.extraInfo?.airConditioning ? "SI" : "NO"}</p>
-                <p>Comodidades:</p>
+                <div className="ml-20 flex flex-col ">
+                  <p className="text-xl font-semibold">
+                    {" "}
+                    {property?.ambiences}
+                  </p>
+                  <p className="text-sm text-gray-400">Ambientes</p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold">
+                    {" "}
+                    {property?.bathrooms}
+                  </p>
+                  <p className="text-sm text-gray-400">Baños</p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold">
+                    {formatSurface(property?.extraInfo?.surface ?? 0)} m²
+                  </p>
+                  <p className="text-sm text-gray-400">Superficie</p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold">
+                    {property?.extraInfo?.buildYear}
+                  </p>
+                  <p className="text-sm text-gray-400">Año construcción</p>
+                </div>
               </div>
-            </div>
+            </section>
+            <section className="py-4">
+              <h3 className="pb-2 text-xl font-semibold">Descripción:</h3>
+              <p className="text-gray-200">
+                {property?.extraInfo?.description}
+              </p>
+            </section>
+            MAPA
+            <section className="py-4">
+              <h3 className="pb-2 text-xl font-semibold">Destacados:</h3>
+              <div className="grid grid-cols-2 ">
+                <div className="flex">
+                  <p className="basis-1/3 text-gray-300">Estacionamiento:</p>
+                  <p className="font-semibold">
+                    {property?.extraInfo?.parking ? "SI" : "NO"}
+                  </p>
+                </div>
+                <div className="flex">
+                  <p className="basis-1/3 text-gray-300">Mascotas:</p>
+                  <p className="font-semibold">
+                    {property?.extraInfo?.petsAllowed ? "SI" : "NO"}
+                  </p>
+                </div>
+                <div className="flex">
+                  <p className="basis-1/3 text-gray-300">A/C:</p>
+                  <p className="font-semibold">
+                    {property?.extraInfo?.airConditioning ? "SI" : "NO"}
+                  </p>
+                </div>
+                <div className="flex">
+                  <p className="basis-1/3 text-gray-300">Comodidades:</p>
+                </div>
+              </div>
+            </section>
           </section>
         </div>
       </main>

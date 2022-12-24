@@ -46,6 +46,8 @@ model PropertyInfo {
   parking             Boolean
   airConditioning     Boolean
   buildYear           Int
+  orientation         String
+  bedrooms            Int
   property            Property @relation(fields: [propertyId], references: [id])
   propertyId          String @unique
   utilities           Utility[]
