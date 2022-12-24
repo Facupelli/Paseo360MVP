@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
 type Props = {
@@ -5,9 +6,16 @@ type Props = {
 };
 
 export default function Nav({ children }: Props) {
+  const router = useRouter();
+
   return (
     <nav className="fixed z-20 flex h-20 w-full border-b border-gray-600 bg-gray-900 px-4 py-6 align-baseline">
-      <p className="text-lg font-bold">PASEO.360</p>
+      <p
+        onClick={() => router.push("/")}
+        className="cursor-pointer text-lg font-bold"
+      >
+        PASEO.360
+      </p>
 
       {children}
 
