@@ -41,26 +41,28 @@ const Home: NextPage = () => {
       <Nav />
 
       <main className="px-2 ">
-        <MapContainer
-          properties={properties.data}
-          setActiveProperty={setActiveProperty}
-          activeProperty={activeProperty}
-        />
+        <div className="pt-20">
+          <MapContainer
+            properties={properties.data}
+            setActiveProperty={setActiveProperty}
+            activeProperty={activeProperty}
+          />
 
-        <section className="ml-auto w-3/5 pl-4  ">
-          <PropertyFilters />
-          <div className="grid grid-cols-2 gap-6">
-            {!properties.isLoading &&
-              properties?.data?.map((property) => (
-                <PropertyCard
-                  key={property.id}
-                  property={property}
-                  activeProperty={activeProperty}
-                />
-              ))}
-          </div>
-          <button onClick={handleClick}>CREAR PROPIEDAD</button>
-        </section>
+          <section className="ml-auto w-3/5 pl-6 ">
+            <PropertyFilters />
+            <div className="grid grid-cols-2 gap-6 pt-20">
+              {!properties.isLoading &&
+                properties?.data?.map((property) => (
+                  <PropertyCard
+                    key={property.id}
+                    property={property}
+                    activeProperty={activeProperty}
+                  />
+                ))}
+            </div>
+            <button onClick={handleClick}>CREAR PROPIEDAD</button>
+          </section>
+        </div>
       </main>
     </>
   );
