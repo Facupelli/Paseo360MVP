@@ -21,7 +21,7 @@ export default function PropertyCard({ property, activeProperty }: Props) {
 
   return (
     <article
-      className={`cursor-pointer scroll-m-2 rounded-bl  rounded-br bg-slate-700 hover:shadow-md ${
+      className={`cursor-pointer scroll-m-4 rounded-bl  rounded-br bg-slate-700 hover:shadow-md ${
         activeProperty === property.id
           ? "border border-gray-50 shadow-lg"
           : "border border-gray-800"
@@ -84,7 +84,10 @@ export default function PropertyCard({ property, activeProperty }: Props) {
         </div>
       </Carousel>
       {/* <p>{property.type.name}</p> */}
-      <div className="p-2">
+      <div
+        className="p-2"
+        onClick={() => router.push(`/property/${property.id}`)}
+      >
         <div className="flex items-baseline gap-x-2 pt-2">
           <p className="text-xs font-semibold">
             {property.operation === "rent" ? "Alquiler" : "Venta"}

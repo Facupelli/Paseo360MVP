@@ -7,6 +7,7 @@ import {
 } from "next";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
+import GoBackButton from "../../components/UI/GoBackButton";
 import { Property } from "../../types/property";
 import { formatPrice } from "../../utils/property";
 
@@ -23,8 +24,16 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" ">
+        <GoBackButton />
         <section>
           <div>DETAIL</div>
+
+          <iframe
+            width="853"
+            height="480"
+            src="https://my.matterport.com/show/?m=KpBQUvEMirJ"
+            allow="xr-spatial-tracking"
+          ></iframe>
           <p>{property?.operation}</p>
           <p>{formatPrice(property?.price ?? 0)}</p>
           <p>{property?.address}</p>
