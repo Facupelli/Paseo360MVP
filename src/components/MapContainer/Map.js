@@ -1,14 +1,21 @@
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-export default function Map({ properties, setActiveProperty, activeProperty }) {
+export default function Map({
+  properties,
+  setActiveProperty,
+  activeProperty,
+  zoom,
+  bounds,
+  center,
+}) {
   const [map, setMap] = useState(null);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY ?? "key",
   });
 
-  const center = useMemo(() => ({ lat: -31.5374719, lng: -68.5216905 }), []);
+  const centerValue = useMemo(() => ({ lat: center[0], lng: center[1] }), []);
 
   const onLoad = useCallback(function callback(map) {
     setMap(map);
@@ -18,18 +25,20 @@ export default function Map({ properties, setActiveProperty, activeProperty }) {
     setMap(null);
   }, []);
 
-  useEffect(() => {
-    if (map) {
-      const bounds = new window.google.maps.LatLngBounds();
-      properties?.map((property) => {
-        bounds.extend({
-          lat: property.locationLat,
-          lng: property.locationLng,
+  if (bounds) {
+    useEffect(() => {
+      if (map) {
+        const bounds = new window.google.maps.LatLngBounds();
+        properties?.map((property) => {
+          bounds.extend({
+            lat: property.locationLat,
+            lng: property.locationLng,
+          });
         });
-      });
-      map.fitBounds(bounds);
-    }
-  }, [map, properties]);
+        map.fitBounds(bounds);
+      }
+    }, [map, properties]);
+  }
 
   const handleMarkerClick = (id) => {
     if (id === activeProperty) {
@@ -43,8 +52,8 @@ export default function Map({ properties, setActiveProperty, activeProperty }) {
   return (
     <GoogleMap
       mapContainerStyle={{ width: "100%", height: "100%" }}
-      center={center}
-      zoom={10}
+      center={centerValue}
+      zoom={zoom}
       onLoad={onLoad}
       onUnmount={onUnmount}
       onClick={() => setActiveProperty("")}

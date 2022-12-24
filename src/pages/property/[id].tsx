@@ -9,6 +9,7 @@ import { formatPrice, formatSurface } from "../../utils/property";
 
 import Nav from "../../components/Nav";
 import GoBackButton from "../../components/UI/GoBackButton";
+import Map from "../../components/MapContainer/Map";
 
 type Props = {
   property?: Property;
@@ -82,7 +83,16 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
                 {property?.extraInfo?.description}
               </p>
             </section>
-            MAPA
+            <section className="h-96 w-full">
+              <Map
+                properties={[property]}
+                setActiveProperty={() => null}
+                activeProperty=""
+                zoom={18}
+                center={[property?.locationLat, property?.locationLng]}
+                bounds={false}
+              />
+            </section>
             <section className="py-4">
               <h3 className="pb-2 text-xl font-semibold">Destacados:</h3>
               <div className="grid grid-cols-2 ">
@@ -125,7 +135,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as IParams;
   const property = await prisma?.property.findUnique({
     where: { id },
-    include: { extraInfo: true },
+    include: { extraInfo: true, type: true },
   });
 
   return {

@@ -21,7 +21,7 @@ export default function PropertyCard({ property, activeProperty }: Props) {
 
   return (
     <article
-      className={`cursor-pointer scroll-m-4 rounded-bl  rounded-br bg-slate-700 hover:shadow-md ${
+      className={`cursor-pointer scroll-m-44 rounded-bl  rounded-br bg-slate-700 hover:shadow-md ${
         activeProperty === property.id
           ? "border border-gray-50 shadow-lg"
           : "border border-gray-800"

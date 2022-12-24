@@ -20,6 +20,9 @@ export default function MapContainer({
         properties={properties}
         setActiveProperty={setActiveProperty}
         activeProperty={activeProperty}
+        zoom={10}
+        bounds
+        center={[-31.5374719, -68.5216905]}
       />
     </section>
   );
