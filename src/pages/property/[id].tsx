@@ -5,7 +5,7 @@ import { ParsedUrlQuery } from "querystring";
 
 import { Property } from "../../types/property";
 
-import { formatPrice } from "../../utils/property";
+import { formatPrice, formatSurface } from "../../utils/property";
 
 import Nav from "../../components/Nav";
 import GoBackButton from "../../components/UI/GoBackButton";
@@ -23,48 +23,55 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
-      <main className="mx-auto max-w-screen-lg bg-gray-700">
-        <GoBackButton />
-        <section>
-          <div>
-            <iframe
-              width="1024"
-              height="480"
-              src="https://my.matterport.com/show/?m=KpBQUvEMirJ"
-              allow="xr-spatial-tracking"
-            ></iframe>
-          </div>
-          <p className="pt-4 font-semibold">
-            {property?.address}{" "}
-            <span className="text-base font-normal text-gray-400">
-              departamento San Juan
-            </span>
-          </p>
-          <p>{property?.operation}</p>
-          <div className="flex items-center gap-4">
-            <p className="text-xl font-bold">
-              {formatPrice(property?.price ?? 0)}
-            </p>
-            <p className="ml-12">{property?.ambiences}</p>
-            <p>{property?.bathrooms}</p>
-            <p>Superficie: {property?.extraInfo?.surface}</p>
-          </div>
-          MAPA
-          <div className="py-4">
-            <p className="font-bold">Descripción:</p>
-            <p>{property?.extraInfo?.description}</p>
-          </div>
-          <p>Año construcción: {property?.extraInfo?.buildYear}</p>
-          <div className="py-4">
-            <p className="font-bold">Destacados:</p>
-            <div className="grid grid-cols-2 ">
-              <p>Garage: {property?.extraInfo?.parking ? "SI" : "NO"}</p>
-              <p>Mascotas: {property?.extraInfo?.petsAllowed ? "SI" : "NO"}</p>
-              <p>A/C: {property?.extraInfo?.airConditioning ? "SI" : "NO"}</p>
-              <p>Comodidades:</p>
+      <main className="mx-auto max-w-screen-lg ">
+        <div className="pt-20">
+          <GoBackButton />
+          <section>
+            <div className="py-6">
+              <iframe
+                width="1024"
+                height="480"
+                src="https://my.matterport.com/show/?m=KpBQUvEMirJ"
+                allow="xr-spatial-tracking"
+              ></iframe>
             </div>
-          </div>
-        </section>
+            <p className="font-semibold">
+              {property?.address}{" "}
+              <span className="text-base font-normal text-gray-400">
+                departamento San Juan
+              </span>
+            </p>
+            <p>{property?.operation}</p>
+            <div className="flex items-center gap-4">
+              <p className="text-xl font-bold">
+                {formatPrice(property?.price ?? 0)}
+              </p>
+              <p className="ml-12">Ambientes: {property?.ambiences}</p>
+              <p>Baños: {property?.bathrooms}</p>
+              <p>
+                Superficie: {formatSurface(property?.extraInfo?.surface ?? 0)}
+                m²
+              </p>
+            </div>
+            MAPA
+            <div className="py-4">
+              <p className="font-bold">Descripción:</p>
+              <p>{property?.extraInfo?.description}</p>
+            </div>
+            <p>Año construcción: {property?.extraInfo?.buildYear}</p>
+            <div className="py-4">
+              <p className="font-bold">Destacados:</p>
+              <div className="grid grid-cols-2 ">
+                <p>Garage: {property?.extraInfo?.parking ? "SI" : "NO"}</p>
+                <p>
+                  Mascotas: {property?.extraInfo?.petsAllowed ? "SI" : "NO"}
+                </p>
+                <p>A/C: {property?.extraInfo?.airConditioning ? "SI" : "NO"}</p>
+                <p>Comodidades:</p>
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
     </>
   );
