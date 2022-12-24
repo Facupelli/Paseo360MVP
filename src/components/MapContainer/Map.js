@@ -8,6 +8,7 @@ export default function Map({
   zoom,
   bounds,
   center,
+  iconSize,
 }) {
   const [map, setMap] = useState(null);
 
@@ -69,8 +70,8 @@ export default function Map({
                 : "https://www.svgrepo.com/show/42498/building.svg"
             } `,
             scaledSize: {
-              width: activeProperty === id ? 35 : 22,
-              height: activeProperty === id ? 35 : 22,
+              width: iconSize,
+              height: iconSize,
             },
           }}
           onClick={() => handleMarkerClick(id)}

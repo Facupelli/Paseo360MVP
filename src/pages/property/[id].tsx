@@ -91,6 +91,7 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
                 zoom={18}
                 center={[property?.locationLat, property?.locationLng]}
                 bounds={false}
+                iconSize={32}
               />
             </section>
             <section className="py-4">

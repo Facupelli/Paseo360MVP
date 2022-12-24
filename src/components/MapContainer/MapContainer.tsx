@@ -23,6 +23,7 @@ export default function MapContainer({
         zoom={10}
         bounds
         center={[-31.5374719, -68.5216905]}
+        iconSize={22}
       />
     </section>
   );
