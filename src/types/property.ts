@@ -9,6 +9,20 @@ export type Property = {
   price: number;
   ambiences: number;
   bathrooms: number;
+  extraInfo?: ExtraInfo;
+};
+
+export type ExtraInfo = {
+  id: string;
+  description: string;
+  surface: number;
+  petsAllowed: boolean;
+  parking: boolean;
+  airConditioning: boolean;
+  buildYear: number;
+  property: Property;
+  propertyId: string;
+  utilities: string[];
 };
 
 export type PropertyType = {

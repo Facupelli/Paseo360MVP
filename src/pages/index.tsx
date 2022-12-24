@@ -16,6 +16,7 @@ const Home: NextPage = () => {
 
   // const createProperty = trpc.property.propertyCreate.useMutation();
   // const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();
+  // const createPropertyInfo = trpc.property.propertyInfoCreate.useMutation();
 
   const handleClick = () => {
     // createProperty.mutate({
@@ -28,6 +29,15 @@ const Home: NextPage = () => {
     //   price: 2700000,
     // });
     // createPropertyType.mutate({ name: "Departamento" });
+    // createPropertyInfo.mutate({
+    //   description: "lores ckasa scaisc ascisc coias",
+    //   surface: 50000,
+    //   petsAllowed: true,
+    //   parking: false,
+    //   airConditioning: true,
+    //   buildYear: 2015,
+    //   propertyId: "clbz7k3vk0002e7kopotb3vxy",
+    // });
   };
 
   return (
