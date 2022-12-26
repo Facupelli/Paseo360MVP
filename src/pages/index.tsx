@@ -12,8 +12,8 @@ import { trpc } from "../utils/trpc";
 
 type FormValues = {
   operation: string;
-  minPrice: string;
-  maxPrice: string;
+  minPrice: number | undefined;
+  maxPrice: number | undefined;
   type: string;
   ambiences: string[];
   bathrooms: string[];
@@ -25,6 +25,7 @@ const Home: NextPage = () => {
     handleSubmit,
     watch,
     formState: { errors },
+    setValue,
   } = useForm<FormValues>({
     defaultValues: {
       type: "all",
@@ -94,7 +95,11 @@ const Home: NextPage = () => {
           />
 
           <section className="ml-auto  w-full  pl-6 md:w-3/5">
-            <PropertyFilters register={register} />
+            <PropertyFilters
+              register={register}
+              setValue={setValue}
+              price={{ minPrice, maxPrice }}
+            />
             <div className="grid gap-6 pt-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
               {!properties.isLoading &&
                 properties?.data?.map((property) => (

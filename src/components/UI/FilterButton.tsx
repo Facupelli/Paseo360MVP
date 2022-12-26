@@ -1,10 +1,13 @@
 import AdjustmentIcon from "../../Icons/Adjustment";
+import XMark from "../../Icons/XMark";
 
 type Props = {
   handleClick: () => void;
   text: string;
   color: string;
   icon?: boolean;
+  reset?: boolean;
+  handleReset?: () => void;
 };
 
 export default function FilterButton({
@@ -12,6 +15,8 @@ export default function FilterButton({
   text,
   color,
   icon,
+  reset,
+  handleReset,
 }: Props) {
   let className = "";
   if (color === "gray") {
@@ -30,6 +35,14 @@ export default function FilterButton({
     >
       {icon && <AdjustmentIcon />}
       {text}
+      {reset && (
+        <div
+          onClick={handleReset}
+          className="rounded-full p-px hover:bg-purple-800"
+        >
+          <XMark />
+        </div>
+      )}
     </button>
   );
 }
