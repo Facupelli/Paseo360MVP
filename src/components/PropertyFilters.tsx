@@ -20,18 +20,25 @@ type FormValues = {
   bathrooms: string[];
 };
 
-export default function PropertyFilters({
-  register,
-  setValue,
-  price,
-}: {
+type Props = {
   register: UseFormRegister<FormValues>;
   setValue: UseFormSetValue<FormValues>;
   price: {
     minPrice: number | undefined;
     maxPrice: number | undefined;
   };
-}) {
+  ambiences: {
+    ambiences: string[];
+    bathrooms: string[];
+  };
+};
+
+export default function PropertyFilters({
+  register,
+  setValue,
+  price,
+  ambiences,
+}: Props) {
   const priceDivRef = useRef<HTMLDivElement>(null);
   const ambiencesDivRef = useRef<HTMLDivElement>(null);
 
@@ -110,6 +117,11 @@ export default function PropertyFilters({
             color="gray"
             handleClick={() => setShowAmbiencesFilter(true)}
             text="Ambientes / Baños"
+            reset={!!ambiences.ambiences[1] || !!ambiences.bathrooms[1]}
+            handleReset={() => {
+              setValue("ambiences", ["0"]);
+              setValue("bathrooms", ["0"]);
+            }}
           />
         </div>
         {showAmbiencesFilter && ambiencesDivRef.current && (
