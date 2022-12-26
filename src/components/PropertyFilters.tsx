@@ -29,7 +29,6 @@ export default function PropertyFilters() {
   const [showPriceFilter, setShowPriceFilter] = useState<boolean>(false);
   const [showAmbiencesFilter, setShowAmbiencesFilter] =
     useState<boolean>(false);
-  const [showBathsFilter, setShowBathsFilter] = useState<boolean>(false);
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -83,18 +82,18 @@ export default function PropertyFilters() {
 
         <select
           {...register("type")}
-          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900"
+          className="visible cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900 sm:max-md:hidden"
         >
           <option value="todos">todos</option>
           <option value="Casa">Casa</option>
           <option value="Departamento">Departamento</option>
         </select>
 
-        <div ref={ambiencesDivRef}>
+        <div ref={ambiencesDivRef} className="visible sm:max-lg:hidden ">
           <FilterButton
             color="gray"
             handleClick={() => setShowAmbiencesFilter(true)}
-            text="Ambientes"
+            text="Ambientes / Baños"
           />
         </div>
         {showAmbiencesFilter && ambiencesDivRef.current && (
@@ -103,6 +102,8 @@ export default function PropertyFilters() {
             left={getLeftDivPosition(ambiencesDivRef.current)}
           >
             <fieldset className="align-center flex flex-wrap text-gray-800">
+              <legend>Ambientes:</legend>
+
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
@@ -198,29 +199,10 @@ export default function PropertyFilters() {
                   +5
                 </label>
               </div>
-
-              <FilterButton
-                handleClick={() => setShowAmbiencesFilter(false)}
-                text="listo"
-                color="white"
-              />
             </fieldset>
-          </Flyout>
-        )}
 
-        <div ref={bathsDivRef}>
-          <FilterButton
-            color="gray"
-            handleClick={() => setShowBathsFilter(true)}
-            text="Baños"
-          />
-        </div>
-        {showBathsFilter && bathsDivRef.current && (
-          <Flyout
-            top={getTopDivPosition(bathsDivRef.current)}
-            left={getLeftDivPosition(bathsDivRef.current)}
-          >
             <fieldset className="flex flex-wrap items-center text-gray-800">
+              <legend>Baños:</legend>
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
@@ -300,15 +282,16 @@ export default function PropertyFilters() {
                   +4
                 </label>
               </div>
-
-              <FilterButton
-                handleClick={() => setShowBathsFilter(false)}
-                text="listo"
-                color="white"
-              />
             </fieldset>
+
+            <FilterButton
+              handleClick={() => setShowAmbiencesFilter(false)}
+              text="listo"
+              color="white"
+            />
           </Flyout>
         )}
+
         <FilterButton
           icon
           color="gray"
