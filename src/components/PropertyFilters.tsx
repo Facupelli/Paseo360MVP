@@ -59,11 +59,13 @@ export default function PropertyFilters({
           >
             <div className="flex gap-2">
               <input
+                className="rounded-sm border border-gray-800 px-2 text-gray-800"
                 type="text"
                 {...register("minPrice")}
                 placeholder="mínimo"
               />
               <input
+                className="rounded-sm border border-gray-800 px-2 text-gray-800"
                 type="text"
                 {...register("maxPrice")}
                 placeholder="máximo"

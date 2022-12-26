@@ -33,6 +33,8 @@ const Home: NextPage = () => {
     },
   });
 
+  const minPrice = watch("minPrice");
+  const maxPrice = watch("maxPrice");
   const type = watch("type");
   const ambiences = watch("ambiences");
   const bathrooms = watch("bathrooms");
@@ -41,6 +43,8 @@ const Home: NextPage = () => {
     typeId: type === "all" ? undefined : type,
     ambiences,
     bathrooms,
+    minPrice: Number(minPrice ?? 0),
+    maxPrice: maxPrice ? Number(maxPrice) : undefined,
   });
 
   const [activeProperty, setActiveProperty] = useState<string>("");
