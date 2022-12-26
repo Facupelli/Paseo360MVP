@@ -60,7 +60,7 @@ const Home: NextPage = () => {
 
           <section className="ml-auto w-3/5 pl-6 ">
             <PropertyFilters />
-            <div className="grid grid-cols-2 gap-6 pt-20">
+            <div className="grid gap-6 pt-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
               {!properties.isLoading &&
                 properties?.data?.map((property) => (
                   <PropertyCard

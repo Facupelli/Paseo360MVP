@@ -43,7 +43,7 @@ export default function PropertyFilters() {
       >
         <select
           {...register("operation")}
-          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2"
+          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900"
         >
           <option value="rent">Alquiler</option>
           <option value="sell">Venta</option>
@@ -83,7 +83,7 @@ export default function PropertyFilters() {
 
         <select
           {...register("type")}
-          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2"
+          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900"
         >
           <option value="todos">todos</option>
           <option value="Casa">Casa</option>
@@ -310,6 +310,7 @@ export default function PropertyFilters() {
           </Flyout>
         )}
         <FilterButton
+          icon
           color="gray"
           text="Más filtros"
           handleClick={() => null}
