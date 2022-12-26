@@ -21,6 +21,7 @@ export const propertyRouter = router({
       })
     )
     .query(async ({ input }) => {
+      console.log("type", input.typeId);
       const properties = await prisma?.property.findMany({
         where: {
           operation: input.operation,
@@ -29,12 +30,15 @@ export const propertyRouter = router({
           ambiences: input.ambiences,
           bathrooms: input.bathrooms,
           extraInfo: {
-            surface: { gte: input.minSurface, lte: input.maxSurface },
+            // surface: { gte: input.minSurface, lte: input.maxSurface },
             petsAllowed: input.petsAllowed,
-            buildYear: { gte: input.minBuildYear },
+            // buildYear: { gte: input.minBuildYear },
             parking: input.parking,
             airConditioning: input.airConditioning,
           },
+        },
+        include: {
+          type: true,
         },
       });
 

@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 
 import MapContainer from "../components/MapContainer/MapContainer";
 import Nav from "../components/Nav";
@@ -9,8 +10,30 @@ import PropertyFilters from "../components/PropertyFilters";
 
 import { trpc } from "../utils/trpc";
 
+type FormValues = {
+  operation: string;
+  minPrice: string;
+  maxPrice: string;
+  type: string;
+  ambiences: string;
+  bathrooms: string;
+};
+
 const Home: NextPage = () => {
-  const properties = trpc.property.getAllProperties.useQuery();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const type = watch("type");
+  const ambiences = watch("ambiences");
+  const bathrooms = watch("bathrooms");
+
+  const properties = trpc.property.getFilteredProperties.useQuery({
+    typeId: type === "all" ? undefined : type,
+  });
 
   const [activeProperty, setActiveProperty] = useState<string>("");
 
@@ -59,7 +82,7 @@ const Home: NextPage = () => {
           />
 
           <section className="ml-auto w-3/5 pl-6 ">
-            <PropertyFilters />
+            <PropertyFilters register={register} />
             <div className="grid gap-6 pt-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
               {!properties.isLoading &&
                 properties?.data?.map((property) => (

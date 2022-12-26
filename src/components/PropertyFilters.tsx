@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { useForm, UseFormRegister } from "react-hook-form";
 
 import { getLeftDivPosition, getTopDivPosition } from "../utils/filters";
 
@@ -15,16 +15,13 @@ type FormValues = {
   bathrooms: string;
 };
 
-export default function PropertyFilters() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<FormValues>();
+export default function PropertyFilters({
+  register,
+}: {
+  register: UseFormRegister<FormValues>;
+}) {
   const priceDivRef = useRef<HTMLDivElement>(null);
   const ambiencesDivRef = useRef<HTMLDivElement>(null);
-  const bathsDivRef = useRef<HTMLDivElement>(null);
 
   const [showPriceFilter, setShowPriceFilter] = useState<boolean>(false);
   const [showAmbiencesFilter, setShowAmbiencesFilter] =
@@ -37,7 +34,7 @@ export default function PropertyFilters() {
   return (
     <section className="fixed z-20 w-full bg-gray-800">
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        // onSubmit={handleSubmit(onSubmit)}
         className="flex items-center gap-4 py-4"
       >
         <select
@@ -84,9 +81,9 @@ export default function PropertyFilters() {
           {...register("type")}
           className="visible cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900 sm:max-md:hidden"
         >
-          <option value="todos">todos</option>
-          <option value="Casa">Casa</option>
-          <option value="Departamento">Departamento</option>
+          <option value="all">Todos</option>
+          <option value="clby23yd40000e7ikw3evgekx">Casas</option>
+          <option value="clbz7mo6n0003e7kowfcl1c3t">Departamentos</option>
         </select>
 
         <div ref={ambiencesDivRef} className="visible sm:max-lg:hidden ">
