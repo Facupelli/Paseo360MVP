@@ -34,6 +34,7 @@ const Home: NextPage = () => {
     },
   });
 
+  const operation = watch("operation");
   const minPrice = watch("minPrice");
   const maxPrice = watch("maxPrice");
   const type = watch("type");
@@ -41,6 +42,7 @@ const Home: NextPage = () => {
   const bathrooms = watch("bathrooms");
 
   const properties = trpc.property.getFilteredProperties.useQuery({
+    operation,
     typeId: type === "all" ? undefined : type,
     ambiences,
     bathrooms,
