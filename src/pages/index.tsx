@@ -89,7 +89,7 @@ const Home: NextPage = () => {
             activeProperty={activeProperty}
           />
 
-          <section className="ml-auto w-3/5 pl-6 ">
+          <section className="ml-auto  w-full  pl-6 md:w-3/5">
             <PropertyFilters register={register} />
             <div className="grid gap-6 pt-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
               {!properties.isLoading &&

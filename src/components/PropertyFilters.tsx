@@ -79,14 +79,14 @@ export default function PropertyFilters({
 
         <select
           {...register("type")}
-          className="visible cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900 sm:max-md:hidden"
+          className=" hidden cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900 md:block "
         >
           <option value="all">Todos</option>
           <option value="clby23yd40000e7ikw3evgekx">Casas</option>
           <option value="clbz7mo6n0003e7kowfcl1c3t">Departamentos</option>
         </select>
 
-        <div ref={ambiencesDivRef} className="visible sm:max-lg:hidden ">
+        <div ref={ambiencesDivRef} className="hidden md:block ">
           <FilterButton
             color="gray"
             handleClick={() => setShowAmbiencesFilter(true)}
