@@ -27,7 +27,9 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
       <Nav />
       <main className="mx-auto max-w-screen-lg ">
         <div className="pt-20">
-          <GoBackButton />
+          <div className="pt-2">
+            <GoBackButton />
+          </div>
           <section>
             <section className="grid grid-cols-10 gap-2 py-6">
               <div className="col-span-7 ">

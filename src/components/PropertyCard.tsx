@@ -1,9 +1,14 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Carousel from "nuka-carousel/lib/carousel";
-import { Ref, useRef, RefObject } from "react";
-import { Property } from "../types/property";
+import { useRef } from "react";
+
 import { formatPrice } from "../utils/property";
+
+import { Property } from "../types/property";
+
+import ChevronLeft from "../Icons/ChevronLeft";
+import ChevronRight from "../Icons/ChevronRight";
 
 type Props = {
   property: Property;
@@ -43,8 +48,16 @@ export default function PropertyCard({ property, activeProperty }: Props) {
         //   </button>
         // )}
         defaultControlsConfig={{
-          nextButtonText: ">",
-          prevButtonText: "<",
+          nextButtonStyle: {
+            backgroundColor: "transparent",
+            filter: "drop-shadow(1px 1px 1px rgba(0,0,0,0.5))",
+          },
+          prevButtonStyle: {
+            backgroundColor: "transparent",
+            filter: "drop-shadow(1px 1px 1px rgba(0,0,0,0.5))",
+          },
+          nextButtonText: <ChevronRight />,
+          prevButtonText: <ChevronLeft />,
           pagingDotsStyle: {
             padding: "0 2px",
           },
