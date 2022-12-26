@@ -10,8 +10,8 @@ export const propertyRouter = router({
         typeId: z.string().optional(),
         minPrice: z.number().optional(),
         maxPrice: z.number().optional(),
-        ambiences: z.number().optional(),
-        bathrooms: z.number().optional(),
+        ambiences: z.array(z.string()),
+        bathrooms: z.array(z.string()),
         minSurface: z.number().optional(),
         maxSurface: z.number().optional(),
         petsAllowed: z.boolean().optional(),
@@ -27,8 +27,22 @@ export const propertyRouter = router({
           operation: input.operation,
           typeId: input.typeId,
           price: { gte: input.minPrice, lte: input.maxPrice },
-          ambiences: input.ambiences,
-          bathrooms: input.bathrooms,
+          ambiences: {
+            gte: Number(input.ambiences[0]),
+            lte: Number(
+              input.ambiences[0] === "0"
+                ? 20
+                : input.ambiences[input.ambiences.length - 1]
+            ),
+          },
+          bathrooms: {
+            gte: Number(input.bathrooms[0]),
+            lte: Number(
+              input.bathrooms[0] === "0"
+                ? 20
+                : input.bathrooms[input.bathrooms.length - 1]
+            ),
+          },
           extraInfo: {
             // surface: { gte: input.minSurface, lte: input.maxSurface },
             petsAllowed: input.petsAllowed,

@@ -15,8 +15,8 @@ type FormValues = {
   minPrice: string;
   maxPrice: string;
   type: string;
-  ambiences: string;
-  bathrooms: string;
+  ambiences: string[];
+  bathrooms: string[];
 };
 
 const Home: NextPage = () => {
@@ -25,7 +25,13 @@ const Home: NextPage = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: {
+      type: "all",
+      ambiences: ["0"],
+      bathrooms: ["0"],
+    },
+  });
 
   const type = watch("type");
   const ambiences = watch("ambiences");
@@ -33,6 +39,8 @@ const Home: NextPage = () => {
 
   const properties = trpc.property.getFilteredProperties.useQuery({
     typeId: type === "all" ? undefined : type,
+    ambiences,
+    bathrooms,
   });
 
   const [activeProperty, setActiveProperty] = useState<string>("");

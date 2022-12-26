@@ -11,8 +11,8 @@ type FormValues = {
   minPrice: string;
   maxPrice: string;
   type: string;
-  ambiences: string;
-  bathrooms: string;
+  ambiences: string[];
+  bathrooms: string[];
 };
 
 export default function PropertyFilters({
@@ -98,20 +98,20 @@ export default function PropertyFilters({
             top={getTopDivPosition(ambiencesDivRef.current)}
             left={getLeftDivPosition(ambiencesDivRef.current)}
           >
-            <fieldset className="align-center flex flex-wrap text-gray-800">
-              <legend>Ambientes:</legend>
+            <fieldset className="align-center flex flex-wrap pb-4 text-gray-800">
+              <legend className="font-semibold">Ambientes:</legend>
 
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="any"
+                  id="Aany"
                   type="checkbox"
-                  value="any"
+                  value="0"
                   {...register("ambiences")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="any"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center  peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="Aany"
                 >
                   any
                 </label>
@@ -120,14 +120,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="1"
+                  id="A1"
                   type="checkbox"
                   value={1}
                   {...register("ambiences")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="1"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="A1"
                 >
                   1
                 </label>
@@ -136,14 +136,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="2"
+                  id="A2"
                   type="checkbox"
                   value={2}
                   {...register("ambiences")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="2"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="A2"
                 >
                   2
                 </label>
@@ -152,14 +152,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="3"
+                  id="A3"
                   type="checkbox"
                   value={3}
                   {...register("ambiences")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="3"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="A3"
                 >
                   3
                 </label>
@@ -168,14 +168,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="4"
+                  id="A4"
                   type="checkbox"
                   value={4}
                   {...register("ambiences")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="4"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="A4"
                 >
                   4
                 </label>
@@ -184,14 +184,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="+5"
+                  id="A+5"
                   type="checkbox"
-                  value="+5"
+                  value="5"
                   {...register("ambiences")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="+5"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="A+5"
                 >
                   +5
                 </label>
@@ -199,18 +199,18 @@ export default function PropertyFilters({
             </fieldset>
 
             <fieldset className="flex flex-wrap items-center text-gray-800">
-              <legend>Baños:</legend>
+              <legend className="font-semibold">Baños:</legend>
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="any"
+                  id="Bany"
                   type="checkbox"
-                  value="any"
+                  value="0"
                   {...register("bathrooms")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="any"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="Bany"
                 >
                   any
                 </label>
@@ -219,14 +219,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="1"
+                  id="B1"
                   type="checkbox"
                   value={1}
                   {...register("bathrooms")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="1"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="B1"
                 >
                   1
                 </label>
@@ -235,14 +235,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="2"
+                  id="B2"
                   type="checkbox"
                   value={2}
                   {...register("bathrooms")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="2"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="B2"
                 >
                   2
                 </label>
@@ -251,14 +251,14 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="3"
+                  id="B3"
                   type="checkbox"
                   value={3}
                   {...register("bathrooms")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="3"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="B3"
                 >
                   3
                 </label>
@@ -267,25 +267,43 @@ export default function PropertyFilters({
               <div className="flex align-middle">
                 <input
                   className="peer hidden"
-                  id="+4"
+                  id="B4"
                   type="checkbox"
-                  value="+4"
+                  value="4"
                   {...register("bathrooms")}
                 />
                 <label
-                  className="w-10 cursor-pointer border border-gray-500 p-2 text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
-                  htmlFor="+4"
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="B4"
                 >
-                  +4
+                  4
+                </label>
+              </div>
+
+              <div className="flex align-middle">
+                <input
+                  className="peer hidden"
+                  id="B5"
+                  type="checkbox"
+                  value="5"
+                  {...register("bathrooms")}
+                />
+                <label
+                  className="w-10 cursor-pointer border border-gray-500 px-2 py-px text-center peer-checked:bg-gray-700 peer-checked:font-semibold peer-checked:text-white"
+                  htmlFor="B5"
+                >
+                  +5
                 </label>
               </div>
             </fieldset>
 
-            <FilterButton
-              handleClick={() => setShowAmbiencesFilter(false)}
-              text="listo"
-              color="white"
-            />
+            <div className="flex justify-end pt-6">
+              <FilterButton
+                handleClick={() => setShowAmbiencesFilter(false)}
+                text="listo"
+                color="white"
+              />
+            </div>
           </Flyout>
         )}
 

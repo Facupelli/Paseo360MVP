@@ -13,7 +13,10 @@ export default function Flyout({ children, top, left }: Props) {
   };
 
   return (
-    <div className="fixed z-10 bg-white p-4 shadow-md " style={styles}>
+    <div
+      className="fixed z-10 rounded-sm bg-white py-4 px-6 shadow-md"
+      style={styles}
+    >
       {children}
     </div>
   );
