@@ -44,11 +44,11 @@ export const propertyRouter = router({
             ),
           },
           extraInfo: {
-            // surface: { gte: input.minSurface, lte: input.maxSurface },
             petsAllowed: input.petsAllowed,
             // buildYear: { gte: input.minBuildYear },
             parking: input.parking,
             airConditioning: input.airConditioning,
+            surface: { gte: input.minSurface, lte: input.maxSurface },
           },
         },
         include: {

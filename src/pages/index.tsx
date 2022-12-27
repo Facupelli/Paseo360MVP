@@ -36,6 +36,8 @@ const Home: NextPage = () => {
   const petsAllowed = watch("petsAllowed");
   const parking = watch("parking");
   const airConditioning = watch("airConditioning");
+  const minSurface = watch("minSurface");
+  const maxSurface = watch("maxSurface");
 
   console.log(petsAllowed);
 
@@ -49,6 +51,8 @@ const Home: NextPage = () => {
     petsAllowed: petsAllowed ? true : undefined,
     parking: parking ? true : undefined,
     airConditioning: airConditioning ? true : undefined,
+    minSurface: Number(minSurface ?? 0),
+    maxSurface: maxSurface ? Number(maxSurface) : undefined,
   });
 
   const [activeProperty, setActiveProperty] = useState<string>("");
@@ -70,13 +74,13 @@ const Home: NextPage = () => {
     // });
     // createPropertyType.mutate({ name: "Departamento" });
     // createPropertyInfo.mutate({
-    //   description: "lores ckasa scaisc ascisc coias",
-    //   surface: 50000,
-    //   petsAllowed: true,
-    //   parking: false,
+    //   description: "lores ckasa scaisc ascisc coias adsasd asd",
+    //   surface: 196000,
+    //   petsAllowed: false,
+    //   parking: true,
     //   airConditioning: true,
     //   buildYear: 2015,
-    //   propertyId: "clbz7k3vk0002e7kopotb3vxy",
+    //   propertyId: "clbz7oem20008e7koqcdvvp4m",
     // });
   };
 

@@ -40,4 +40,6 @@ export type FormValues = {
   petsAllowed: boolean;
   parking: boolean;
   airConditioning: boolean;
+  minSurface: number;
+  maxSurface: number;
 };

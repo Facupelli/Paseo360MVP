@@ -32,7 +32,7 @@ export default function AllFilters({ setShowAllFilters, register }: Props) {
 
         <div>
           <label>Precio:</label>
-          <PriceInputs register={register} />
+          <PriceInputs register={register} price />
         </div>
 
         <div>
@@ -66,6 +66,11 @@ export default function AllFilters({ setShowAllFilters, register }: Props) {
             <input type="checkbox" {...register("airConditioning")} />
             <label>Aire Acondicionado</label>
           </div>
+        </div>
+
+        <div>
+          <label>Superficie:</label>
+          <PriceInputs register={register} />
         </div>
       </form>
     </aside>
