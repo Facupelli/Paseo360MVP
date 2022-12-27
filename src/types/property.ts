@@ -29,3 +29,15 @@ export type PropertyType = {
   id: string;
   name: string;
 };
+
+export type FormValues = {
+  operation: string;
+  minPrice: number | undefined;
+  maxPrice: number | undefined;
+  type: string;
+  ambiences: string[];
+  bathrooms: string[];
+  petsAllowed: boolean;
+  parking: boolean;
+  airConditioning: boolean;
+};

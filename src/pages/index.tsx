@@ -1,24 +1,16 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import AllFilters from "../components/AllFilters";
+
+import { FormValues } from "../types/property";
+import { trpc } from "../utils/trpc";
 
 import MapContainer from "../components/MapContainer/MapContainer";
 import Nav from "../components/Nav";
 import PropertyCard from "../components/PropertyCard";
 import PropertyFilters from "../components/PropertyFilters";
-
-import { trpc } from "../utils/trpc";
-
-type FormValues = {
-  operation: string;
-  minPrice: number | undefined;
-  maxPrice: number | undefined;
-  type: string;
-  ambiences: string[];
-  bathrooms: string[];
-};
 
 const Home: NextPage = () => {
   const {
@@ -41,6 +33,11 @@ const Home: NextPage = () => {
   const type = watch("type");
   const ambiences = watch("ambiences");
   const bathrooms = watch("bathrooms");
+  const petsAllowed = watch("petsAllowed");
+  const parking = watch("parking");
+  const airConditioning = watch("airConditioning");
+
+  console.log(petsAllowed);
 
   const properties = trpc.property.getFilteredProperties.useQuery({
     operation,
@@ -49,6 +46,9 @@ const Home: NextPage = () => {
     bathrooms,
     minPrice: Number(minPrice ?? 0),
     maxPrice: maxPrice ? Number(maxPrice) : undefined,
+    petsAllowed: petsAllowed ? true : undefined,
+    parking: parking ? true : undefined,
+    airConditioning: airConditioning ? true : undefined,
   });
 
   const [activeProperty, setActiveProperty] = useState<string>("");
@@ -92,7 +92,9 @@ const Home: NextPage = () => {
         <Nav />
       </header>
 
-      {showAllFilters && <AllFilters setShowAllFilters={setShowAllFilters} />}
+      {showAllFilters && (
+        <AllFilters setShowAllFilters={setShowAllFilters} register={register} />
+      )}
 
       <main className="px-2 ">
         <div className="pt-20">
