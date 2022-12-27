@@ -40,7 +40,7 @@ export default function FilterButton({
           onClick={handleReset}
           className="rounded-full p-px hover:bg-purple-800"
         >
-          <XMark />
+          <XMark size={17} />
         </div>
       )}
     </button>

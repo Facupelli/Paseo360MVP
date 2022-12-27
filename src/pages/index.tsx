@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import AllFilters from "../components/AllFilters";
 
 import MapContainer from "../components/MapContainer/MapContainer";
 import Nav from "../components/Nav";
@@ -51,6 +52,7 @@ const Home: NextPage = () => {
   });
 
   const [activeProperty, setActiveProperty] = useState<string>("");
+  const [showAllFilters, setShowAllFilters] = useState<boolean>(false);
 
   // const createProperty = trpc.property.propertyCreate.useMutation();
   // const createPropertyType = trpc.propertyType.propertyTypeCreate.useMutation();
@@ -86,7 +88,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Nav />
+      <header>
+        <Nav />
+      </header>
+
+      {showAllFilters && <AllFilters setShowAllFilters={setShowAllFilters} />}
 
       <main className="px-2 ">
         <div className="pt-20">
@@ -102,6 +108,7 @@ const Home: NextPage = () => {
               setValue={setValue}
               price={{ minPrice, maxPrice }}
               ambiences={{ ambiences, bathrooms }}
+              setShowAllFIlters={setShowAllFilters}
             />
             <div className="grid gap-6 pt-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
               {!properties.isLoading &&

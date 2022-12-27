@@ -1,10 +1,5 @@
 import { Dispatch, SetStateAction, useRef, useState } from "react";
-import {
-  SetFieldValue,
-  useForm,
-  UseFormRegister,
-  UseFormSetValue,
-} from "react-hook-form";
+import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 
 import { getLeftDivPosition, getTopDivPosition } from "../utils/filters";
 
@@ -31,6 +26,7 @@ type Props = {
     ambiences: string[];
     bathrooms: string[];
   };
+  setShowAllFIlters: Dispatch<SetStateAction<boolean>>;
 };
 
 export default function PropertyFilters({
@@ -38,6 +34,7 @@ export default function PropertyFilters({
   setValue,
   price,
   ambiences,
+  setShowAllFIlters,
 }: Props) {
   const priceDivRef = useRef<HTMLDivElement>(null);
   const ambiencesDivRef = useRef<HTMLDivElement>(null);
@@ -342,7 +339,7 @@ export default function PropertyFilters({
           icon
           color="gray"
           text="Más filtros"
-          handleClick={() => null}
+          handleClick={() => setShowAllFIlters(true)}
         />
       </form>
     </section>
