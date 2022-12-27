@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import AllFilters from "../components/AllFilters";
 
-import { FormValues } from "../types/property";
+import { FormValues } from "../types/filters";
+import { defaultValues } from "../utils/filters";
 import { trpc } from "../utils/trpc";
 
 import MapContainer from "../components/MapContainer/MapContainer";
@@ -21,19 +22,7 @@ const Home: NextPage = () => {
     setValue,
     reset,
   } = useForm<FormValues>({
-    defaultValues: {
-      operation: "rent",
-      type: "all",
-      ambiences: ["0"],
-      bathrooms: ["0"],
-      maxPrice: undefined,
-      minPrice: undefined,
-      petsAllowed: false,
-      parking: false,
-      airConditioning: false,
-      minSurface: undefined,
-      maxSurface: undefined,
-    },
+    defaultValues: defaultValues,
   });
 
   const operation = watch("operation");

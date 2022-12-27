@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { UseFormRegister, UseFormReset } from "react-hook-form";
 
 import XMark from "../Icons/XMark";
-import { FormValues } from "../types/property";
+import { FormValues } from "../types/filters";
 import AmbiencesFilter from "./UI/AmbiencesFilter";
 import PriceInputs from "./UI/PriceInputs";
 
