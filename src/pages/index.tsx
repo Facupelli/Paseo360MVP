@@ -112,8 +112,13 @@ const Home: NextPage = () => {
                     activeProperty={activeProperty}
                   />
                 ))}
+              {properties?.data?.length === 0 && (
+                <p className="col-span-2">
+                  No se encontraron propiedades. Prueba modificar los filtros!
+                </p>
+              )}
             </div>
-            <button onClick={handleClick}>CREAR PROPIEDAD</button>
+            {/* <button onClick={handleClick}>CREAR PROPIEDAD</button> */}
           </section>
         </div>
       </main>

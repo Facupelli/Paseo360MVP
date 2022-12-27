@@ -15,7 +15,7 @@ export default function MapContainer({
   activeProperty,
 }: Props) {
   return (
-    <section className="hidden h-300 bg-slate-300 md:fixed md:block md:h-screen md:w-2/5">
+    <section className="hidden bg-slate-300 md:fixed md:block md:h-[calc(100vh_-_80px)] md:w-2/5">
       <Map
         properties={properties}
         setActiveProperty={setActiveProperty}

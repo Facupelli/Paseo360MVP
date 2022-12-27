@@ -26,20 +26,18 @@ export default function Map({
     setMap(null);
   }, []);
 
-  if (bounds) {
-    useEffect(() => {
-      if (map) {
-        const bounds = new window.google.maps.LatLngBounds();
-        properties?.map((property) => {
-          bounds.extend({
-            lat: property.locationLat,
-            lng: property.locationLng,
-          });
+  useEffect(() => {
+    if (map && bounds && properties?.length > 0) {
+      const bounds = new window.google.maps.LatLngBounds();
+      properties?.map((property) => {
+        bounds.extend({
+          lat: property.locationLat,
+          lng: property.locationLng,
         });
-        map.fitBounds(bounds);
-      }
-    }, [map, properties]);
-  }
+      });
+      map.fitBounds(bounds);
+    }
+  }, [map, properties, bounds]);
 
   const handleMarkerClick = (id) => {
     if (id === activeProperty) {
