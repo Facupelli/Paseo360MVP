@@ -32,14 +32,14 @@ export type PropertyType = {
 
 export type FormValues = {
   operation: string;
-  minPrice: number | undefined;
-  maxPrice: number | undefined;
+  minPrice: string | undefined;
+  maxPrice: string | undefined;
   type: string;
   ambiences: string[];
   bathrooms: string[];
   petsAllowed: boolean;
   parking: boolean;
   airConditioning: boolean;
-  minSurface: number;
-  maxSurface: number;
+  minSurface: string | undefined;
+  maxSurface: string | undefined;
 };

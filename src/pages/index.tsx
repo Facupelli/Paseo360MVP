@@ -19,11 +19,20 @@ const Home: NextPage = () => {
     watch,
     formState: { errors },
     setValue,
+    reset,
   } = useForm<FormValues>({
     defaultValues: {
+      operation: "rent",
       type: "all",
       ambiences: ["0"],
       bathrooms: ["0"],
+      maxPrice: undefined,
+      minPrice: undefined,
+      petsAllowed: false,
+      parking: false,
+      airConditioning: false,
+      minSurface: undefined,
+      maxSurface: undefined,
     },
   });
 
@@ -38,8 +47,6 @@ const Home: NextPage = () => {
   const airConditioning = watch("airConditioning");
   const minSurface = watch("minSurface");
   const maxSurface = watch("maxSurface");
-
-  console.log(petsAllowed);
 
   const properties = trpc.property.getFilteredProperties.useQuery({
     operation,
@@ -97,7 +104,11 @@ const Home: NextPage = () => {
       </header>
 
       {showAllFilters && (
-        <AllFilters setShowAllFilters={setShowAllFilters} register={register} />
+        <AllFilters
+          setShowAllFilters={setShowAllFilters}
+          register={register}
+          reset={reset}
+        />
       )}
 
       <main className="px-2 ">

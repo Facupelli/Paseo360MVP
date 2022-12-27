@@ -13,8 +13,8 @@ type Props = {
   register: UseFormRegister<FormValues>;
   setValue: UseFormSetValue<FormValues>;
   price: {
-    minPrice: number | undefined;
-    maxPrice: number | undefined;
+    minPrice: string | undefined;
+    maxPrice: string | undefined;
   };
   ambiences: {
     ambiences: string[];

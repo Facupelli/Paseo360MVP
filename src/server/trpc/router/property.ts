@@ -21,7 +21,6 @@ export const propertyRouter = router({
       })
     )
     .query(async ({ input }) => {
-      console.log("type", input.typeId);
       const properties = await prisma?.property.findMany({
         where: {
           operation: input.operation,
