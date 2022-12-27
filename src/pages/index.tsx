@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import AllFilters from "../components/AllFilters";
 
 import { FormValues } from "../types/filters";
-import { defaultValues } from "../utils/filters";
+import { filterDefaultValues } from "../utils/filters";
 import { trpc } from "../utils/trpc";
 
 import MapContainer from "../components/MapContainer/MapContainer";
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
     setValue,
     reset,
   } = useForm<FormValues>({
-    defaultValues: defaultValues,
+    defaultValues: filterDefaultValues,
   });
 
   const operation = watch("operation");

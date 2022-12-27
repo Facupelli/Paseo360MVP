@@ -6,7 +6,7 @@ export const getLeftDivPosition = (ref: HTMLDivElement) => {
   return ref.getBoundingClientRect().left;
 };
 
-export const defaultValues = {
+export const filterDefaultValues = {
   operation: "rent",
   type: "all",
   ambiences: ["0"],
