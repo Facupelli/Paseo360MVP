@@ -1,4 +1,9 @@
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  MarkerF,
+  MarkerClustererF,
+} from "@react-google-maps/api";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export default function Map({
@@ -39,6 +44,11 @@ export default function Map({
     }
   }, [map, properties, bounds]);
 
+  function clusterMarkers(map, markers) {
+    const clustererOptions = { imagePath: "../../img/m" };
+    const markerCluster = new MarkerClusterer(map, markers, clustererOptions);
+  }
+
   const handleMarkerClick = (id) => {
     if (id === activeProperty) {
       return;
@@ -57,24 +67,33 @@ export default function Map({
       onUnmount={onUnmount}
       onClick={() => setActiveProperty("")}
     >
-      {properties?.map(({ id, locationLat, locationLng, type }) => (
-        <MarkerF
-          key={id}
-          position={{ lat: locationLat, lng: locationLng }}
-          icon={{
-            url: `${
-              type.name === "Casa"
-                ? "https://www.svgrepo.com/show/5123/house.svg"
-                : "https://www.svgrepo.com/show/42498/building.svg"
-            } `,
-            scaledSize: {
-              width: iconSize,
-              height: iconSize,
-            },
-          }}
-          onClick={() => handleMarkerClick(id)}
-        />
-      ))}
+      {properties?.length > 0 && (
+        <MarkerClustererF
+        // imagePath="./../img/m"
+        >
+          {(clusterer) =>
+            properties?.map(({ id, locationLat, locationLng, type }) => (
+              <MarkerF
+                key={id}
+                position={{ lat: locationLat, lng: locationLng }}
+                icon={{
+                  url: `${
+                    type.name === "Casa"
+                      ? "https://www.svgrepo.com/show/5123/house.svg"
+                      : "https://www.svgrepo.com/show/42498/building.svg"
+                  } `,
+                  scaledSize: {
+                    width: iconSize,
+                    height: iconSize,
+                  },
+                }}
+                clusterer={clusterer}
+                onClick={() => handleMarkerClick(id)}
+              />
+            ))
+          }
+        </MarkerClustererF>
+      )}
     </GoogleMap>
   );
 }
