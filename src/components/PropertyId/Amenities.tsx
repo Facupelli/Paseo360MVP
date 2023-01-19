@@ -6,7 +6,7 @@ type Props = {
 
 export default function Amenities({ extraInfo }: Props) {
   return (
-    <section className="py-4">
+    <section className="">
       <h3 className="pb-2 text-xl font-semibold">Comodidades:</h3>
       <div className="grid grid-cols-2 ">
         <div className="flex">

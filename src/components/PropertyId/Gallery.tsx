@@ -6,7 +6,7 @@ type Props = {
 
 export default function Gallery({ address }: Props) {
   return (
-    <section className="grid grid-cols-10 gap-2 py-6">
+    <section className="grid grid-cols-10 gap-2">
       <div className="col-span-7 ">
         <iframe
           width="100%"

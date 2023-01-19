@@ -7,8 +7,8 @@ type Props = {
 
 export default function MainInfo({ property }: Props) {
   return (
-    <section className="border-b border-gray-400 pb-6">
-      <h3 className="pb-4 font-semibold">
+    <section className="border-b border-gray-400 py-2">
+      <h3 className="pb-6 font-semibold">
         {property?.address}{" "}
         <span className="text-base font-normal text-gray-400">
           departamento, San Juan

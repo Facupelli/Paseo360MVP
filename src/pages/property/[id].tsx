@@ -27,15 +27,18 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
-      <main className="mx-auto max-w-screen-lg ">
+      <main className="mx-auto max-w-screen-lg pb-6">
         <div className="pt-20">
           <div className="pt-2">
             <GoBackButton />
           </div>
-          <section>
-            <Gallery address={property?.address} />
-            <MainInfo property={property} />
+          <section className="flex flex-col gap-10">
+            <div>
+              <Gallery address={property?.address} />
+              <MainInfo property={property} />
+            </div>
             <Description description={property?.extraInfo?.description} />
+            <Amenities extraInfo={property?.extraInfo} />
             <section className="h-96 w-full">
               <Map
                 properties={[property]}
@@ -47,7 +50,6 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
                 iconSize={32}
               />
             </section>
-            <Amenities extraInfo={property?.extraInfo} />
           </section>
         </div>
       </main>
