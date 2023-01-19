@@ -9,6 +9,7 @@ export type Property = {
   price: number;
   ambiences: number;
   bathrooms: number;
+  floor?: string | null;
   extraInfo?: ExtraInfo;
 };
 
@@ -22,10 +23,18 @@ export type ExtraInfo = {
   buildYear: number;
   property: Property;
   propertyId: string;
-  utilities: string[];
+  bedrooms: number;
+  orientation: string;
+  amenities: Amenity[];
 };
 
 export type PropertyType = {
   id: string;
   name: string;
+};
+
+export type Amenity = {
+  id: string;
+  name: string;
+  properties: ExtraInfo[];
 };

@@ -71,7 +71,7 @@ export const propertyRouter = router({
         where: { id: input.id },
         include: {
           type: true,
-          extraInfo: true,
+          extraInfo: { include: { amenities: true } },
         },
       });
 
@@ -115,6 +115,8 @@ export const propertyRouter = router({
         airConditioning: z.boolean(),
         buildYear: z.number(),
         propertyId: z.string(),
+        orientation: z.string(),
+        bedrooms: z.number(),
       })
     )
     .mutation(async ({ input }) => {
@@ -127,6 +129,8 @@ export const propertyRouter = router({
           parking: input.parking,
           airConditioning: input.airConditioning,
           buildYear: input.buildYear,
+          orientation: input.orientation,
+          bedrooms: input.bedrooms,
         },
       });
 

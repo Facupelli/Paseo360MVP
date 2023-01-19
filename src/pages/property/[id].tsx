@@ -11,6 +11,7 @@ import Map from "../../components/MapContainer/Map";
 import Gallery from "../../components/PropertyId/Gallery";
 import MainInfo from "../../components/PropertyId/MainInfo";
 import Description from "../../components/PropertyId/Description";
+import Characteristics from "../../components/PropertyId/Characteristics";
 import Amenities from "../../components/PropertyId/Amenities";
 
 type Props = {
@@ -32,13 +33,14 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
           <div className="pt-2">
             <GoBackButton />
           </div>
-          <section className="flex flex-col gap-10">
+          <section className="flex flex-col gap-12">
             <div>
               <Gallery address={property?.address} />
               <MainInfo property={property} />
             </div>
             <Description description={property?.extraInfo?.description} />
-            <Amenities extraInfo={property?.extraInfo} />
+            <Characteristics extraInfo={property?.extraInfo} />
+            <Amenities amenities={property?.extraInfo?.amenities} />
             <section className="h-96 w-full">
               <Map
                 properties={[property]}
@@ -66,7 +68,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as IParams;
   const property = await prisma?.property.findUnique({
     where: { id },
-    include: { extraInfo: true, type: true },
+    include: { extraInfo: { include: { amenities: true } }, type: true },
   });
 
   return {

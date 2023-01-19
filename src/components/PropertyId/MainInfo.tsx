@@ -35,7 +35,7 @@ export default function MainInfo({ property }: Props) {
         </div>
         {property?.type.name === "Departamento" && (
           <div>
-            <p className="text-xl font-semibold">2°</p>
+            <p className="text-xl font-semibold">{property.floor}°</p>
             <p className="text-sm text-gray-400">piso</p>
           </div>
         )}

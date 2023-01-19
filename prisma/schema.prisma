@@ -20,6 +20,7 @@ model Property {
   locationLat   Float
   locationLng   Float
   address       String
+  floor         String?
   type          PropertyType @relation(fields: [typeId], references: [id])
   typeId        String
   operation     String
@@ -50,10 +51,10 @@ model PropertyInfo {
   bedrooms            Int
   property            Property @relation(fields: [propertyId], references: [id])
   propertyId          String @unique
-  utilities           Utility[]
+  amenities           Amenity[]
 }
 
-model Utility {
+model Amenity {
   id            String   @id @default(cuid())
   name          String
   properties    PropertyInfo[]
