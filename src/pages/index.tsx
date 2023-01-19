@@ -100,7 +100,7 @@ const Home: NextPage = () => {
         />
       )}
 
-      <main className="px-2 ">
+      <main className="px-4 ">
         <div className="pt-20">
           <MapContainer
             properties={properties.data}
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
             activeProperty={activeProperty}
           />
 
-          <section className="ml-auto  w-full  pl-6 md:w-3/5">
+          <section className="ml-auto w-full pl-0 md:w-3/5 md:pl-6">
             <PropertyFilters
               register={register}
               setValue={setValue}
