@@ -5,18 +5,20 @@ import { ParsedUrlQuery } from "querystring";
 
 import { Property } from "../../types/property";
 
-import { formatPrice, formatSurface } from "../../utils/property";
-
 import Nav from "../../components/Nav";
 import GoBackButton from "../../components/UI/GoBackButton";
 import Map from "../../components/MapContainer/Map";
-import Image from "next/image";
+import Gallery from "../../components/PropertyId/Gallery";
+import MainInfo from "../../components/PropertyId/MainInfo";
+import Description from "../../components/PropertyId/Description";
+import Amenities from "../../components/PropertyId/Amenities";
 
 type Props = {
   property?: Property;
 };
 
 const PropertyDetail: NextPage = ({ property }: Props) => {
+  console.log(property);
   return (
     <>
       <Head>
@@ -31,81 +33,9 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
             <GoBackButton />
           </div>
           <section>
-            <section className="grid grid-cols-10 gap-2 py-6">
-              <div className="col-span-7 ">
-                <iframe
-                  width="100%"
-                  height="384"
-                  src="https://my.matterport.com/show/?m=KpBQUvEMirJ"
-                  allow="xr-spatial-tracking"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <div className="col-span-3 flex h-96 cursor-pointer flex-col gap-2 transition-opacity duration-200 ease-in-out hover:opacity-70">
-                <div className="relative w-full basis-1/2 bg-slate-50 ">
-                  <Image
-                    src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                    alt={property?.address ?? "alt"}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <div className="relative h-32 w-full basis-1/2 bg-slate-50 ">
-                  <Image
-                    src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                    alt={property?.address ?? "alt"}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-              </div>
-            </section>
-            <section className="border-b border-gray-400 pb-6">
-              <h3 className="pb-4 font-semibold">
-                {property?.address}{" "}
-                <span className="text-base font-normal text-gray-400">
-                  departamento, San Juan
-                </span>
-              </h3>
-              {/* <p>{property?.operation}</p> */}
-              <div className="flex gap-6">
-                <p className="self-end text-2xl font-bold">
-                  {formatPrice(property?.price ?? 0)}
-                </p>
-                <div className="ml-20 flex flex-col ">
-                  <p className="text-xl font-semibold">
-                    {" "}
-                    {property?.ambiences}
-                  </p>
-                  <p className="text-sm text-gray-400">Ambientes</p>
-                </div>
-                <div>
-                  <p className="text-xl font-semibold">
-                    {" "}
-                    {property?.bathrooms}
-                  </p>
-                  <p className="text-sm text-gray-400">Baños</p>
-                </div>
-                <div>
-                  <p className="text-xl font-semibold">
-                    {formatSurface(property?.extraInfo?.surface ?? 0)} m²
-                  </p>
-                  <p className="text-sm text-gray-400">Superficie</p>
-                </div>
-                <div>
-                  <p className="text-xl font-semibold">
-                    {property?.extraInfo?.buildYear}
-                  </p>
-                  <p className="text-sm text-gray-400">Año construcción</p>
-                </div>
-              </div>
-            </section>
-            <section className="py-4">
-              <h3 className="pb-2 text-xl font-semibold">Descripción:</h3>
-              <p className="text-gray-200">
-                {property?.extraInfo?.description}
-              </p>
-            </section>
+            <Gallery address={property?.address} />
+            <MainInfo property={property} />
+            <Description description={property?.extraInfo?.description} />
             <section className="h-96 w-full">
               <Map
                 properties={[property]}
@@ -117,32 +47,7 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
                 iconSize={32}
               />
             </section>
-            <section className="py-4">
-              <h3 className="pb-2 text-xl font-semibold">Destacados:</h3>
-              <div className="grid grid-cols-2 ">
-                <div className="flex">
-                  <p className="basis-1/3 text-gray-300">Estacionamiento:</p>
-                  <p className="font-semibold">
-                    {property?.extraInfo?.parking ? "SI" : "NO"}
-                  </p>
-                </div>
-                <div className="flex">
-                  <p className="basis-1/3 text-gray-300">Mascotas:</p>
-                  <p className="font-semibold">
-                    {property?.extraInfo?.petsAllowed ? "SI" : "NO"}
-                  </p>
-                </div>
-                <div className="flex">
-                  <p className="basis-1/3 text-gray-300">A/C:</p>
-                  <p className="font-semibold">
-                    {property?.extraInfo?.airConditioning ? "SI" : "NO"}
-                  </p>
-                </div>
-                <div className="flex">
-                  <p className="basis-1/3 text-gray-300">Comodidades:</p>
-                </div>
-              </div>
-            </section>
+            <Amenities extraInfo={property?.extraInfo} />
           </section>
         </div>
       </main>

@@ -6,11 +6,11 @@ export default function ChevronLeft() {
       width="20"
       height="35"
       viewBox="0 0 24 24"
-      stroke-width="3"
+      strokeWidth="3"
       stroke="#ffffff"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <polyline points="15 6 9 12 15 18" />
