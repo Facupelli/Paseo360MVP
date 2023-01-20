@@ -11,6 +11,7 @@ export const filterDefaultValues = {
   // type: "all",
   ambiences: ["0"],
   bathrooms: ["0"],
+  bedrooms: ["0"],
   maxPrice: undefined,
   minPrice: undefined,
   petsAllowed: false,

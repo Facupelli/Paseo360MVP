@@ -31,6 +31,7 @@ const Home: NextPage = () => {
   const type = watch("type");
   const ambiences = watch("ambiences");
   const bathrooms = watch("bathrooms");
+  const bedrooms = watch("bedrooms");
   const petsAllowed = watch("petsAllowed");
   const parking = watch("parking");
   const airConditioning = watch("airConditioning");
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
     typeId: type === "all" ? undefined : type,
     ambiences,
     bathrooms,
+    bedrooms,
     minPrice: Number(minPrice ?? 0),
     maxPrice: maxPrice ? Number(maxPrice) : undefined,
     petsAllowed: petsAllowed ? true : undefined,

@@ -12,6 +12,7 @@ export const propertyRouter = router({
         maxPrice: z.number().optional(),
         ambiences: z.array(z.string()),
         bathrooms: z.array(z.string()),
+        bedrooms: z.array(z.string()),
         minSurface: z.number().optional(),
         maxSurface: z.number().optional(),
         petsAllowed: z.boolean().optional(),
@@ -45,6 +46,14 @@ export const propertyRouter = router({
           extraInfo: {
             petsAllowed: input.petsAllowed,
             // buildYear: { gte: input.minBuildYear },
+            bedrooms: {
+              gte: Number(input.bedrooms[0]),
+              lte: Number(
+                input.bedrooms[0] === "0"
+                  ? 20
+                  : input.bedrooms[input.bedrooms.length - 1]
+              ),
+            },
             parking: input.parking,
             airConditioning: input.airConditioning,
             surface: { gte: input.minSurface, lte: input.maxSurface },

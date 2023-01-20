@@ -5,6 +5,7 @@ export type FormValues = {
   type: string;
   ambiences: string[];
   bathrooms: string[];
+  bedrooms: string[];
   petsAllowed: boolean;
   parking: boolean;
   airConditioning: boolean;

@@ -71,7 +71,8 @@ export default function AllFilters({
           <div className="border-b border-gray-300 ">
             <div className="p-6">
               <NumerRangeFilter register={register} ambiences />
-              <NumerRangeFilter register={register} />
+              <NumerRangeFilter register={register} bathrooms />
+              <NumerRangeFilter register={register} bedrooms />
             </div>
           </div>
 
