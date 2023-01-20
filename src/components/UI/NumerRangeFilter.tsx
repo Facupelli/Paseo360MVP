@@ -1,12 +1,12 @@
 import { UseFormRegister } from "react-hook-form";
-import { FormValues } from "../../types/property";
+import { FormValues } from "../../types/filters";
 
 type Props = {
   register: UseFormRegister<FormValues>;
   ambiences?: boolean;
 };
 
-export default function AmbiencesFilter({ register, ambiences }: Props) {
+export default function NumberRangeFilter({ register, ambiences }: Props) {
   return (
     <fieldset className="align-center flex flex-wrap pb-4 text-gray-800">
       <legend className="font-semibold">

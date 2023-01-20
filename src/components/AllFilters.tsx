@@ -5,7 +5,7 @@ import { FormValues } from "../types/filters";
 import { filterDefaultValues } from "../utils/filters";
 
 import XMark from "../Icons/XMark";
-import AmbiencesFilter from "./UI/AmbiencesFilter";
+import NumerRangeFilter from "./UI/NumerRangeFilter";
 import RangeInputs from "./UI/RangeInputs";
 
 type Props = {
@@ -70,8 +70,8 @@ export default function AllFilters({
 
           <div className="border-b border-gray-300 ">
             <div className="p-6">
-              <AmbiencesFilter register={register} ambiences />
-              <AmbiencesFilter register={register} />
+              <NumerRangeFilter register={register} ambiences />
+              <NumerRangeFilter register={register} />
             </div>
           </div>
 

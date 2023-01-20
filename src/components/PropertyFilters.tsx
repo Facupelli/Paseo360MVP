@@ -7,7 +7,6 @@ import { FormValues } from "../types/filters";
 import Flyout from "./UI/Flyout";
 import FilterButton from "./UI/FilterButton";
 import RangeInputs from "./UI/RangeInputs";
-import AmbiencesFilter from "./UI/AmbiencesFilter";
 
 type Props = {
   register: UseFormRegister<FormValues>;
@@ -31,11 +30,8 @@ export default function PropertyFilters({
   setShowAllFIlters,
 }: Props) {
   const priceDivRef = useRef<HTMLDivElement>(null);
-  const ambiencesDivRef = useRef<HTMLDivElement>(null);
 
   const [showPriceFilter, setShowPriceFilter] = useState<boolean>(false);
-  const [showAmbiencesFilter, setShowAmbiencesFilter] =
-    useState<boolean>(false);
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -91,36 +87,6 @@ export default function PropertyFilters({
           <option value="clby23yd40000e7ikw3evgekx">Casas</option>
           <option value="clbz7mo6n0003e7kowfcl1c3t">Departamentos</option>
         </select>
-
-        <div ref={ambiencesDivRef} className="hidden md:block ">
-          <FilterButton
-            color="gray"
-            handleClick={() => setShowAmbiencesFilter(true)}
-            text="Ambientes / Baños"
-            reset={!!ambiences.ambiences[1] || !!ambiences.bathrooms[1]}
-            handleReset={() => {
-              setValue("ambiences", ["0"]);
-              setValue("bathrooms", ["0"]);
-            }}
-          />
-        </div>
-        {showAmbiencesFilter && ambiencesDivRef.current && (
-          <Flyout
-            top={getTopDivPosition(ambiencesDivRef.current)}
-            left={getLeftDivPosition(ambiencesDivRef.current)}
-          >
-            <AmbiencesFilter register={register} ambiences />
-            <AmbiencesFilter register={register} />
-
-            <div className="flex justify-end pt-6">
-              <FilterButton
-                handleClick={() => setShowAmbiencesFilter(false)}
-                text="listo"
-                color="white"
-              />
-            </div>
-          </Flyout>
-        )}
 
         <FilterButton
           icon
