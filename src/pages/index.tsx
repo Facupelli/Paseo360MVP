@@ -1,11 +1,11 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, UseFormWatch } from "react-hook-form";
 import AllFilters from "../components/AllFilters";
 
 import { FormValues } from "../types/filters";
-import { filterDefaultValues } from "../utils/filters";
+import { filterDefaultValues, getFilterObject } from "../utils/filters";
 import { trpc } from "../utils/trpc";
 
 import MapContainer from "../components/MapContainer/MapContainer";
@@ -25,34 +25,21 @@ const Home: NextPage = () => {
     defaultValues: filterDefaultValues,
   });
 
-  const operation = watch("operation");
-  const minPrice = watch("minPrice");
-  const maxPrice = watch("maxPrice");
-  const type = watch("type");
-  const ambiences = watch("ambiences");
-  const bathrooms = watch("bathrooms");
-  const bedrooms = watch("bedrooms");
-  const petsAllowed = watch("petsAllowed");
-  const parking = watch("parking");
-  const airConditioning = watch("airConditioning");
-  const minSurface = watch("minSurface");
-  const maxSurface = watch("maxSurface");
-
-  console.log("MINPRICE", minPrice);
+  const filters = getFilterObject(watch);
 
   const properties = trpc.property.getFilteredProperties.useQuery({
-    operation,
-    typeId: type === "all" ? undefined : type,
-    ambiences,
-    bathrooms,
-    bedrooms,
-    minPrice: Number(minPrice ?? 0),
-    maxPrice: maxPrice ? Number(maxPrice) : undefined,
-    petsAllowed: petsAllowed ? true : undefined,
-    parking: parking ? true : undefined,
-    airConditioning: airConditioning ? true : undefined,
-    minSurface: Number(minSurface ?? 0),
-    maxSurface: maxSurface ? Number(maxSurface) : undefined,
+    operation: filters.operation,
+    typeId: filters.type === "all" ? undefined : filters.type,
+    ambiences: filters.ambiences,
+    bathrooms: filters.bathrooms,
+    bedrooms: filters.bedrooms,
+    minPrice: Number(filters.minPrice ?? 0),
+    maxPrice: filters.maxPrice ? Number(filters.maxPrice) : undefined,
+    petsAllowed: filters.petsAllowed ? true : undefined,
+    parking: filters.parking ? true : undefined,
+    airConditioning: filters.airConditioning ? true : undefined,
+    minSurface: Number(filters.minSurface ?? 0),
+    maxSurface: filters.maxSurface ? Number(filters.maxSurface) : undefined,
   });
 
   const [activeProperty, setActiveProperty] = useState<string>("");
@@ -115,8 +102,11 @@ const Home: NextPage = () => {
             <PropertyFilters
               register={register}
               setValue={setValue}
-              price={{ minPrice, maxPrice }}
-              ambiences={{ ambiences, bathrooms }}
+              price={{ minPrice: filters.minPrice, maxPrice: filters.maxPrice }}
+              ambiences={{
+                ambiences: filters.ambiences,
+                bathrooms: filters.bathrooms,
+              }}
               setShowAllFIlters={setShowAllFilters}
             />
             <div className="grid gap-6 pt-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
