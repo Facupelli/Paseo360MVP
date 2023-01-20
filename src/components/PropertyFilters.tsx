@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 
 import { getLeftDivPosition, getTopDivPosition } from "../utils/filters";
-import { FormValues } from "../types/property";
+import { FormValues } from "../types/filters";
 
 import Flyout from "./UI/Flyout";
 import FilterButton from "./UI/FilterButton";
@@ -49,7 +49,7 @@ export default function PropertyFilters({
       >
         <select
           {...register("operation")}
-          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900"
+          className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-slate-900"
         >
           <option value="rent">Alquiler</option>
           <option value="sell">Venta</option>
@@ -85,7 +85,7 @@ export default function PropertyFilters({
 
         <select
           {...register("type")}
-          className=" hidden cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-purple-900 md:block "
+          className=" hidden cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-slate-900 md:block "
         >
           <option value="all">Todos</option>
           <option value="clby23yd40000e7ikw3evgekx">Casas</option>

@@ -21,10 +21,10 @@ export default function FilterButton({
   let className = "";
   if (color === "gray") {
     className =
-      "bg-gray-800 text-white rounded-md border border-gray-500 p-2 hover:border-purple-900";
+      "bg-gray-800 text-white rounded-md border border-gray-500 p-2 hover:border-slate-900";
   }
   if (color === "white") {
-    className = "bg-purple-800 text-white font-semibold py-2 px-4";
+    className = "bg-slate-900 text-white font-semibold py-2 px-4";
   }
 
   return (
@@ -38,7 +38,7 @@ export default function FilterButton({
       {reset && (
         <div
           onClick={handleReset}
-          className="rounded-full p-px hover:bg-purple-800"
+          className="rounded-full p-px hover:bg-slate-900"
         >
           <XMark size={17} />
         </div>

@@ -37,6 +37,8 @@ const Home: NextPage = () => {
   const minSurface = watch("minSurface");
   const maxSurface = watch("maxSurface");
 
+  console.log(type);
+
   const properties = trpc.property.getFilteredProperties.useQuery({
     operation,
     typeId: type === "all" ? undefined : type,

@@ -8,7 +8,7 @@ export const getLeftDivPosition = (ref: HTMLDivElement) => {
 
 export const filterDefaultValues = {
   operation: "rent",
-  type: "all",
+  // type: "all",
   ambiences: ["0"],
   bathrooms: ["0"],
   maxPrice: undefined,

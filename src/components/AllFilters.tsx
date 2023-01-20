@@ -21,7 +21,6 @@ export default function AllFilters({
   register,
   reset,
 }: Props) {
-  console.log(showAllFilters);
   return (
     <>
       <aside
@@ -40,7 +39,7 @@ export default function AllFilters({
               <label className="font-semibold">Operación:</label>
               <select
                 {...register("operation")}
-                className="cursor-pointer rounded-md border border-gray-500  p-2 hover:border-purple-900"
+                className="cursor-pointer rounded-md border border-gray-500  p-2 hover:border-slate-900"
               >
                 <option value="rent">Alquiler</option>
                 <option value="sell">Venta</option>
@@ -60,7 +59,7 @@ export default function AllFilters({
               <label className="font-semibold">Tipo:</label>
               <select
                 {...register("type")}
-                className=" hidden cursor-pointer rounded-md border border-gray-500  p-2 hover:border-purple-900 md:block "
+                className=" hidden cursor-pointer rounded-md border border-gray-500  p-2 hover:border-slate-900 md:block "
               >
                 <option value="all">Todos</option>
                 <option value="clby23yd40000e7ikw3evgekx">Casas</option>
@@ -126,7 +125,7 @@ export default function AllFilters({
               Limpiar filtros
             </button>
             <button
-              className="rounded bg-purple-700 py-2 px-6 font-semibold text-gray-50"
+              className="rounded bg-slate-800 py-2 px-6 font-semibold text-gray-50"
               type="button"
               onClick={() => setShowAllFilters(false)}
             >
