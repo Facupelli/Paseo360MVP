@@ -100,7 +100,7 @@ const Home: NextPage = () => {
         />
       )}
 
-      <main className="px-4 ">
+      <main className="px-4">
         <div className="pt-20">
           <MapContainer
             properties={properties.data}

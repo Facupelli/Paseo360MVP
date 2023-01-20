@@ -6,8 +6,7 @@ type Props = {
 
 export default function Characteristics({ extraInfo }: Props) {
   return (
-    <section className="">
-      <h3 className="pb-2 text-xl font-semibold">Características:</h3>
+    <>
       <div className="grid grid-cols-2 ">
         <div className="flex">
           <p className="basis-1/3 text-gray-300">Estacionamiento:</p>
@@ -26,6 +25,6 @@ export default function Characteristics({ extraInfo }: Props) {
           </p>
         </div>
       </div>
-    </section>
+    </>
   );
 }

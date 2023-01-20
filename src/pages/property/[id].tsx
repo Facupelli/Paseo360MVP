@@ -10,9 +10,9 @@ import GoBackButton from "../../components/UI/GoBackButton";
 import Map from "../../components/MapContainer/Map";
 import Gallery from "../../components/PropertyId/Gallery";
 import MainInfo from "../../components/PropertyId/MainInfo";
-import Description from "../../components/PropertyId/Description";
 import Characteristics from "../../components/PropertyId/Characteristics";
 import Amenities from "../../components/PropertyId/Amenities";
+import InfoSection from "../../components/PropertyId/InfoSection";
 
 type Props = {
   property?: Property;
@@ -28,19 +28,29 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
-      <main className="mx-auto max-w-screen-lg pb-6">
+      <main className="mx-auto max-w-screen-lg px-4 pb-6">
         <div className="pt-20">
           <div className="pt-2">
             <GoBackButton />
           </div>
-          <section className="flex flex-col gap-12">
+          <section className="flex flex-col gap-10">
             <div>
               <Gallery address={property?.address} />
               <MainInfo property={property} />
             </div>
-            <Description description={property?.extraInfo?.description} />
-            <Characteristics extraInfo={property?.extraInfo} />
-            <Amenities amenities={property?.extraInfo?.amenities} />
+
+            <InfoSection title="Descripción">
+              <p>{property?.extraInfo?.description}</p>
+            </InfoSection>
+
+            <InfoSection title="Características">
+              <Characteristics extraInfo={property?.extraInfo} />
+            </InfoSection>
+
+            <InfoSection title="Comodidades">
+              <Amenities amenities={property?.extraInfo?.amenities} />
+            </InfoSection>
+
             <section className="h-96 w-full">
               <Map
                 properties={[property]}

@@ -67,7 +67,27 @@ export default function Map({
       onUnmount={onUnmount}
       onClick={() => setActiveProperty("")}
     >
-      {properties?.length > 0 && (
+      {properties?.length === 1 &&
+        properties.map(({ id, locationLat, locationLng, type }) => (
+          <MarkerF
+            key={id}
+            position={{ lat: locationLat, lng: locationLng }}
+            icon={{
+              url: `${
+                type.name === "Casa"
+                  ? "https://www.svgrepo.com/show/5123/house.svg"
+                  : "https://www.svgrepo.com/show/42498/building.svg"
+              } `,
+              scaledSize: {
+                width: iconSize,
+                height: iconSize,
+              },
+            }}
+            onClick={() => handleMarkerClick(id)}
+          />
+        ))}
+
+      {properties?.length > 1 && (
         <MarkerClustererF
         // imagePath="./../img/m"
         >

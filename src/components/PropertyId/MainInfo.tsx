@@ -29,6 +29,13 @@ export default function MainInfo({ property }: Props) {
         </div>
         <div>
           <p className="text-xl font-semibold">
+            {" "}
+            {property?.extraInfo?.bedrooms}
+          </p>
+          <p className="text-sm text-gray-400">Dormitorios</p>
+        </div>
+        <div>
+          <p className="text-xl font-semibold">
             {formatSurface(property?.extraInfo?.surface ?? 0)} m²
           </p>
           <p className="text-sm text-gray-400">Superficie</p>
@@ -39,6 +46,12 @@ export default function MainInfo({ property }: Props) {
             <p className="text-sm text-gray-400">piso</p>
           </div>
         )}
+        <div>
+          <p className="text-xl font-semibold">
+            {property?.extraInfo?.orientation}
+          </p>
+          <p className="text-sm text-gray-400">Orientación</p>
+        </div>
         <div>
           <p className="text-xl font-semibold">
             {property?.extraInfo?.buildYear}
