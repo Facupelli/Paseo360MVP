@@ -92,13 +92,12 @@ const Home: NextPage = () => {
         <Nav />
       </header>
 
-      {showAllFilters && (
-        <AllFilters
-          setShowAllFilters={setShowAllFilters}
-          register={register}
-          reset={reset}
-        />
-      )}
+      <AllFilters
+        setShowAllFilters={setShowAllFilters}
+        register={register}
+        reset={reset}
+        showAllFilters={showAllFilters}
+      />
 
       <main className="px-4">
         <div className="pt-20">

@@ -7,6 +7,9 @@ module.exports = {
       height: {
         300: "300px",
       },
+      spacing: {
+        modal: "-600px",
+      },
     },
   },
   plugins: [],

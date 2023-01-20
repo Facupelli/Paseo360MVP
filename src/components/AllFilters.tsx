@@ -9,19 +9,26 @@ import AmbiencesFilter from "./UI/AmbiencesFilter";
 import PriceInputs from "./UI/PriceInputs";
 
 type Props = {
+  showAllFilters: boolean;
   setShowAllFilters: Dispatch<SetStateAction<boolean>>;
   register: UseFormRegister<FormValues>;
   reset: UseFormReset<FormValues>;
 };
 
 export default function AllFilters({
+  showAllFilters,
   setShowAllFilters,
   register,
   reset,
 }: Props) {
+  console.log(showAllFilters);
   return (
     <>
-      <aside className="fixed top-0 right-0 z-30 h-screen w-2/5 bg-gray-100 shadow-xl">
+      <aside
+        className={`fixed top-0 ${
+          showAllFilters ? "right-0" : "right-modal"
+        } z-40 h-screen w-2/5 bg-gray-100 shadow-xl transition-all duration-300 ease-in-out`}
+      >
         <div className="flex justify-end pt-6 pr-6">
           <button type="button" onClick={() => setShowAllFilters(false)}>
             <XMark black size={22} />
@@ -128,7 +135,11 @@ export default function AllFilters({
           </div>
         </form>
       </aside>
-      <div className="fixed inset-0 z-40 w-3/5 bg-black opacity-30"></div>
+      <div
+        className={`${
+          showAllFilters ? "opacity-30" : "hidden opacity-0"
+        } fixed inset-0 z-30 w-full bg-black transition-all duration-300 ease-in-out`}
+      ></div>
     </>
   );
 }
