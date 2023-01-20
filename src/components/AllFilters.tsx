@@ -6,7 +6,7 @@ import { filterDefaultValues } from "../utils/filters";
 
 import XMark from "../Icons/XMark";
 import AmbiencesFilter from "./UI/AmbiencesFilter";
-import PriceInputs from "./UI/PriceInputs";
+import RangeInputs from "./UI/RangeInputs";
 
 type Props = {
   showAllFilters: boolean;
@@ -50,7 +50,7 @@ export default function AllFilters({
           <div className="border-b border-gray-300 ">
             <div className="p-6">
               <label className="font-semibold">Precio:</label>
-              <PriceInputs register={register} price />
+              <RangeInputs register={register} price />
             </div>
           </div>
 
@@ -112,7 +112,7 @@ export default function AllFilters({
           <div className="border-b border-gray-300 ">
             <div className="p-6">
               <label className="font-semibold">Superficie:</label>
-              <PriceInputs register={register} />
+              <RangeInputs register={register} />
             </div>
           </div>
 

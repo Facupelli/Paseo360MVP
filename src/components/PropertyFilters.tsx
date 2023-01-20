@@ -6,7 +6,7 @@ import { FormValues } from "../types/filters";
 
 import Flyout from "./UI/Flyout";
 import FilterButton from "./UI/FilterButton";
-import PriceInputs from "./UI/PriceInputs";
+import RangeInputs from "./UI/RangeInputs";
 import AmbiencesFilter from "./UI/AmbiencesFilter";
 
 type Props = {
@@ -48,7 +48,7 @@ export default function PropertyFilters({
         className="flex items-center gap-4 py-4"
       >
         <select
-          {...register("operation")}
+          onChange={(e) => setValue("operation", e.target.value)}
           className="cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-slate-900"
         >
           <option value="rent">Alquiler</option>
@@ -73,7 +73,7 @@ export default function PropertyFilters({
             left={getLeftDivPosition(priceDivRef.current)}
           >
             <div className="flex gap-2">
-              <PriceInputs register={register} />
+              <RangeInputs setValue={setValue} price />
               <FilterButton
                 handleClick={() => setShowPriceFilter(false)}
                 text="listo"
@@ -84,7 +84,7 @@ export default function PropertyFilters({
         )}
 
         <select
-          {...register("type")}
+          onChange={(e) => setValue("type", e.target.value)}
           className=" hidden cursor-pointer rounded-md border border-gray-500 bg-gray-800 p-2 hover:border-slate-900 md:block "
         >
           <option value="all">Todos</option>
