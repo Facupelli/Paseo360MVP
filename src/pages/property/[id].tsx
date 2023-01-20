@@ -30,7 +30,7 @@ const PropertyDetail: NextPage = ({ property }: Props) => {
       <Nav />
       <main className="mx-auto max-w-screen-lg px-4 pb-6">
         <div className="pt-20">
-          <div className="pt-2">
+          <div className="flex py-4">
             <GoBackButton />
           </div>
           <section className="flex flex-col gap-10">
